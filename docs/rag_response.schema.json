@@ -1,0 +1,214 @@
+{
+  "$defs": {
+    "AnswerClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text",
+        "source_ids"
+      ],
+      "title": "AnswerClaim",
+      "type": "object"
+    },
+    "Latency": {
+      "additionalProperties": false,
+      "properties": {
+        "retrieval_ms": {
+          "minimum": 0,
+          "title": "Retrieval Ms",
+          "type": "number"
+        },
+        "generation_ms": {
+          "minimum": 0,
+          "title": "Generation Ms",
+          "type": "number"
+        },
+        "validation_ms": {
+          "minimum": 0,
+          "title": "Validation Ms",
+          "type": "number"
+        },
+        "total_ms": {
+          "minimum": 0,
+          "title": "Total Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "retrieval_ms",
+        "generation_ms",
+        "validation_ms",
+        "total_ms"
+      ],
+      "title": "Latency",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "chunk_id": {
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "document_name": {
+          "title": "Document Name",
+          "type": "string"
+        },
+        "page_number": {
+          "minimum": 1,
+          "title": "Page Number",
+          "type": "integer"
+        },
+        "supporting_excerpt": {
+          "minLength": 1,
+          "title": "Supporting Excerpt",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "chunk_id",
+        "document_id",
+        "document_name",
+        "page_number",
+        "supporting_excerpt",
+        "version"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "ValidationInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "citation_references": {
+          "enum": [
+            "verified",
+            "not_applicable"
+          ],
+          "title": "Citation References",
+          "type": "string"
+        },
+        "support_check": {
+          "enum": [
+            "exact_quote",
+            "not_applicable"
+          ],
+          "title": "Support Check",
+          "type": "string"
+        },
+        "semantic_faithfulness": {
+          "const": "not_evaluated",
+          "default": "not_evaluated",
+          "title": "Semantic Faithfulness",
+          "type": "string"
+        }
+      },
+      "required": [
+        "citation_references",
+        "support_check"
+      ],
+      "title": "ValidationInfo",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": "1.0.0",
+      "default": "1.0.0",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "answer": {
+      "title": "Answer",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/AnswerClaim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "answered",
+        "insufficient_evidence",
+        "error"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "language": {
+      "enum": [
+        "ar",
+        "en"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "mock",
+        "remote"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "latency": {
+      "$ref": "#/$defs/Latency"
+    },
+    "validation": {
+      "$ref": "#/$defs/ValidationInfo"
+    }
+  },
+  "required": [
+    "answer",
+    "sources",
+    "claims",
+    "status",
+    "reason",
+    "language",
+    "mode",
+    "latency",
+    "validation"
+  ],
+  "title": "RAGResponse",
+  "type": "object"
+}

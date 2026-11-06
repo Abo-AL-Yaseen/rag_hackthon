@@ -1,0 +1,9 @@
+{
+  "src/rag_hackathon/service.py": "cc475fbc11dfedcceb7156649b0c79225c7a7da6e57584e63d05f5ff200c95ca",
+  "src/rag_hackathon/generation/prompts.py": "c4e70ceb93bf156e30f0665f94ceeb053e57828edbb37d9182889828f1b07245",
+  "src/rag_hackathon/generation/selections.py": "f4c6860bcb8ca009abed4347cfa8e607190ae13b2110e4440350ef3a7b08649a",
+  "src/rag_hackathon/diagnostics.py": "12976d393534f531362139bdce833a08e80549db5cb069b7345b7c8b2299e200",
+  "scripts/run_groq_smoke.py": "0120221ce39fb677c7b5abecdf6a152d6414fbc3546cea39c7b1c9a1c60163f4",
+  "scripts/diagnose_arabic_offline.py": "5da00cf1f2ae89791106b074a159a51f55fc93208ad7cbf79672b6df8ae6caf5",
+  "tests/test_arabic_grounding_phase31.py": "b507b21f84d77c9eb0695533b3a1e7ef35296cc9249b06d9b61be7ea3eb468a5"
+}

@@ -1,0 +1,341 @@
+{
+  "synthetic": true,
+  "generation": "real Groq inference",
+  "model": "openai/gpt-oss-120b",
+  "prompt_version": "evidence-extraction-v1",
+  "attempts": 2,
+  "maximum_authorized_attempts": 2,
+  "remaining_smoke_attempts": 0,
+  "account_status_basis": "Explicit user confirmation of Free plan plus local free-call guards; no independent billing API verification",
+  "paid_budget_usd": "0",
+  "provider_reported_cost_usd": null,
+  "cost_note": "No monetary cost field returned by the API is assumed. Free-plan $0 is based on confirmed account status, not a provider invoice.",
+  "tests": [
+    {
+      "case": {
+        "id": "q01",
+        "language": "ar",
+        "question": "كم يوماً يمكن استعارة الكتب؟",
+        "reference_answer": "اثنا عشر يوماً.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "category": "answerable",
+        "expected_status": "answered",
+        "tags": [],
+        "supported": true
+      },
+      "response": {
+        "contract_version": "1.0.0",
+        "answer": "لا أستطيع الإجابة عن هذا السؤال من الأدلة المتاحة.",
+        "sources": [],
+        "claims": [],
+        "status": "insufficient_evidence",
+        "reason": "unsupported_claim",
+        "language": "ar",
+        "mode": "remote",
+        "latency": {
+          "retrieval_ms": 29.996099998243153,
+          "generation_ms": 1391.38329999696,
+          "validation_ms": 0.4985999985365197,
+          "total_ms": 1421.9398999994155
+        },
+        "validation": {
+          "citation_references": "not_applicable",
+          "support_check": "not_applicable",
+          "semantic_faithfulness": "not_evaluated"
+        }
+      },
+      "retrieved": [
+        {
+          "score": 0.8770102884250819,
+          "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+          "document_id": "library",
+          "source": "synthetic_library.json",
+          "page": 1,
+          "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+          "start": 0,
+          "end": 130,
+          "version": "synthetic-v1"
+        },
+        {
+          "score": 0.8175386521454193,
+          "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+          "document_id": "library",
+          "source": "synthetic_library.json",
+          "page": 2,
+          "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+          "start": 0,
+          "end": 117,
+          "version": "synthetic-v1"
+        },
+        {
+          "score": 0.8174987315560285,
+          "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+          "document_id": "library",
+          "source": "synthetic_library.json",
+          "page": 3,
+          "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+          "start": 0,
+          "end": 168,
+          "version": "synthetic-v1"
+        }
+      ],
+      "retrieval_metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0
+        }
+      },
+      "citation_audit": {
+        "source_references_checked": 0,
+        "source_references_correct": 0,
+        "source_reference_accuracy": null,
+        "claims_checked": 0,
+        "claims_exactly_copied": 0,
+        "semantic_faithfulness": null,
+        "note": "Exact-copy and metadata checks do not establish question relevance, entailment or completeness."
+      },
+      "receipt": {
+        "attempt": 1,
+        "question": "كم يوماً يمكن استعارة الكتب؟",
+        "language": "ar",
+        "evidence_sent": [
+          {
+            "score": 0.8770102884250819,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8175386521454193,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8174987315560285,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "error": null,
+        "provider_latency_ms": 1312.3242000001483,
+        "http_status": 200,
+        "rate_limits": {
+          "x-ratelimit-limit-requests": "1000",
+          "x-ratelimit-limit-tokens": "8000",
+          "x-ratelimit-remaining-requests": "999",
+          "x-ratelimit-remaining-tokens": "6122",
+          "x-ratelimit-reset-requests": "1m26.4s",
+          "x-ratelimit-reset-tokens": "14.085s"
+        },
+        "usage": {
+          "prompt_tokens": 983,
+          "completion_tokens": 157,
+          "total_tokens": 1140,
+          "reasoning_tokens": 66
+        },
+        "returned_model_matches": true
+      },
+      "semantic_review": "pending direct evidence inspection",
+      "provider_reported_cost_usd": null
+    },
+    {
+      "case": {
+        "id": "q02",
+        "language": "en",
+        "question": "What are the library opening hours on Saturday?",
+        "reference_answer": "09:00 to 17:00.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "category": "answerable",
+        "expected_status": "answered",
+        "tags": [],
+        "supported": true
+      },
+      "response": {
+        "contract_version": "1.0.0",
+        "answer": "The library opens on Saturday from 09:00 to 17:00. [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "document_name": "synthetic_library.json",
+            "page_number": 2,
+            "supporting_excerpt": "The library opens on Saturday from 09:00 to 17:00.",
+            "version": "synthetic-v1"
+          }
+        ],
+        "claims": [
+          {
+            "text": "The library opens on Saturday from 09:00 to 17:00.",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "status": "answered",
+        "reason": "supported",
+        "language": "en",
+        "mode": "remote",
+        "latency": {
+          "retrieval_ms": 88.80599999974947,
+          "generation_ms": 2218.039100000169,
+          "validation_ms": 0.6071000098017976,
+          "total_ms": 2307.560100001865
+        },
+        "validation": {
+          "citation_references": "verified",
+          "support_check": "exact_quote",
+          "semantic_faithfulness": "not_evaluated"
+        }
+      },
+      "retrieved": [
+        {
+          "score": 0.8617885955632614,
+          "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+          "document_id": "library",
+          "source": "synthetic_library.json",
+          "page": 2,
+          "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+          "start": 0,
+          "end": 117,
+          "version": "synthetic-v1"
+        },
+        {
+          "score": 0.769185385805577,
+          "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+          "document_id": "library",
+          "source": "synthetic_library.json",
+          "page": 1,
+          "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+          "start": 0,
+          "end": 130,
+          "version": "synthetic-v1"
+        },
+        {
+          "score": 0.7652196549024998,
+          "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+          "document_id": "library",
+          "source": "synthetic_library.json",
+          "page": 3,
+          "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+          "start": 0,
+          "end": 168,
+          "version": "synthetic-v1"
+        }
+      ],
+      "retrieval_metrics": {
+        "1": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "3": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0
+        }
+      },
+      "citation_audit": {
+        "source_references_checked": 1,
+        "source_references_correct": 1,
+        "source_reference_accuracy": 1.0,
+        "claims_checked": 1,
+        "claims_exactly_copied": 1,
+        "semantic_faithfulness": null,
+        "note": "Exact-copy and metadata checks do not establish question relevance, entailment or completeness."
+      },
+      "receipt": {
+        "attempt": 2,
+        "question": "What are the library opening hours on Saturday?",
+        "language": "en",
+        "evidence_sent": [
+          {
+            "score": 0.8617885955632614,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.769185385805577,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7652196549024998,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "error": null,
+        "provider_latency_ms": 2160.519800003385,
+        "http_status": 200,
+        "rate_limits": {
+          "x-ratelimit-limit-requests": "1000",
+          "x-ratelimit-limit-tokens": "8000",
+          "x-ratelimit-remaining-requests": "998",
+          "x-ratelimit-remaining-tokens": "5097",
+          "x-ratelimit-reset-requests": "2m52.8s",
+          "x-ratelimit-reset-tokens": "21.772s"
+        },
+        "usage": {
+          "prompt_tokens": 983,
+          "completion_tokens": 150,
+          "total_tokens": 1133,
+          "reasoning_tokens": 59
+        },
+        "returned_model_matches": true
+      },
+      "semantic_review": "pending direct evidence inspection",
+      "provider_reported_cost_usd": null
+    }
+  ],
+  "full_evaluation_executed": false
+}

@@ -1,0 +1,46 @@
+{
+  "synthetic": true,
+  "scripted": true,
+  "rules": [
+    {
+      "question": "كم تستمر ورشة الروبوتات؟",
+      "selections": [
+        {
+          "document_id": "readiness_arabic",
+          "page": 1,
+          "excerpt": "تستمر ورشة الروبوتات تسعة أيام"
+        }
+      ]
+    },
+    {
+      "question": "متى تبدأ جولة المتحف يوم الجمعة؟",
+      "selections": [
+        {
+          "document_id": "readiness_arabic",
+          "page": 2,
+          "excerpt": "تبدأ جولة المتحف يوم الجمعة الساعة الرابعة عصراً"
+        }
+      ]
+    },
+    {
+      "question": "How long is an observatory telescope reservation?",
+      "selections": [
+        {
+          "document_id": "readiness_english",
+          "page": 1,
+          "excerpt": "The observatory telescope reservation lasts forty minutes."
+        }
+      ]
+    },
+    {
+      "question": "Where can I reserve the rehearsal room?",
+      "selections": [
+        {
+          "document_id": "readiness_english",
+          "page": 2,
+          "excerpt": "Reserve the rehearsal room at desk Delta."
+        }
+      ]
+    }
+  ]
+}

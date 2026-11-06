@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "version": "synthetic-v1",
+  "notice": "Invented preparation fixtures. Not Bethlehem University policy, challenge data, or business evidence.",
+  "pages": [
+    {
+      "document_id": "support",
+      "source": "synthetic_support.json",
+      "page": 1,
+      "text": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address."
+    },
+    {
+      "document_id": "support",
+      "source": "synthetic_support.json",
+      "page": 2,
+      "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+    }
+  ]
+}

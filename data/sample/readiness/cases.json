@@ -1,0 +1,37 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "ar1",
+      "language": "ar",
+      "file": "readiness_arabic.pdf",
+      "page": 1,
+      "question": "كم تستمر ورشة الروبوتات؟",
+      "excerpt": "تستمر ورشة الروبوتات تسعة أيام"
+    },
+    {
+      "id": "ar2",
+      "language": "ar",
+      "file": "readiness_arabic.pdf",
+      "page": 2,
+      "question": "متى تبدأ جولة المتحف يوم الجمعة؟",
+      "excerpt": "تبدأ جولة المتحف يوم الجمعة الساعة الرابعة عصراً"
+    },
+    {
+      "id": "en1",
+      "language": "en",
+      "file": "readiness_english.pdf",
+      "page": 1,
+      "question": "How long is an observatory telescope reservation?",
+      "excerpt": "The observatory telescope reservation lasts forty minutes."
+    },
+    {
+      "id": "en2",
+      "language": "en",
+      "file": "readiness_english.pdf",
+      "page": 2,
+      "question": "Where can I reserve the rehearsal room?",
+      "excerpt": "Reserve the rehearsal room at desk Delta."
+    }
+  ]
+}

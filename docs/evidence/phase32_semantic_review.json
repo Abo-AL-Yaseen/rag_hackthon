@@ -1,0 +1,18 @@
+{
+  "outcome": "PASS",
+  "reviewer": "Codex assistant direct comparison with original synthetic source, not independent human review",
+  "checks": {
+    "original_page_contains_exact_excerpt": true,
+    "original_document_matches": true,
+    "page_is_1": true,
+    "twelve_day_fact_present": true,
+    "three_book_fact_present_in_same_original_sentence": true,
+    "answer_contains_only_exact_claim_and_server_citation": true,
+    "native_selection_accepted": true
+  },
+  "question_answered": "The quoted sentence explicitly states a twelve-day borrowing duration.",
+  "additional_fact_review": "The same source sentence also states three books; that fact is supported, not invented.",
+  "unsupported_information_found": false,
+  "scope": "One real-provider response on synthetic preparation documents; not general Arabic or challenge performance.",
+  "result_sha256": "ea0ff38376d602fb157a3c7d7ce8b010a8c7691b76e3e6c2c147bfd5110a199a"
+}

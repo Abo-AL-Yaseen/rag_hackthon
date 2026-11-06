@@ -1,0 +1,159 @@
+{
+  "created_utc": "2026-11-06T18:41:25.641796+00:00",
+  "synthetic_corpus": true,
+  "generation": "real Groq Free inference",
+  "model": "openai/gpt-oss-120b",
+  "prompt_version": "evidence-selection-v2",
+  "maximum_authorized_requests": 1,
+  "actual_attempts": 1,
+  "remaining_authorized_requests": 0,
+  "separate_api_preflight_requests": 0,
+  "question": "كم يوماً يمكن استعارة الكتب؟",
+  "response": {
+    "contract_version": "1.0.0",
+    "answer": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. [S1]",
+    "sources": [
+      {
+        "source_id": "S1",
+        "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+        "document_id": "library",
+        "document_name": "synthetic_library.json",
+        "page_number": 1,
+        "supporting_excerpt": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً.",
+        "version": "synthetic-v1"
+      }
+    ],
+    "claims": [
+      {
+        "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "status": "answered",
+    "reason": "supported",
+    "language": "ar",
+    "mode": "remote",
+    "latency": {
+      "retrieval_ms": 22.74990000296384,
+      "generation_ms": 1322.6142000057735,
+      "validation_ms": 0.8076999947661534,
+      "total_ms": 1350.5656000052113
+    },
+    "validation": {
+      "citation_references": "verified",
+      "support_check": "exact_quote",
+      "semantic_faithfulness": "not_evaluated"
+    }
+  },
+  "retrieved": [
+    {
+      "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+      "document_name": "synthetic_library.json",
+      "page": 1,
+      "score": 0.8770102884250819
+    },
+    {
+      "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+      "document_name": "synthetic_library.json",
+      "page": 2,
+      "score": 0.8175386521454193
+    },
+    {
+      "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+      "document_name": "synthetic_library.json",
+      "page": 3,
+      "score": 0.8174987315560285
+    }
+  ],
+  "expected_selection_id": "X847f17fb107ef9689207164b5ee810ca",
+  "selected_ids": [
+    "X847f17fb107ef9689207164b5ee810ca"
+  ],
+  "citation_audit": {
+    "source_references_checked": 1,
+    "source_references_correct": 1,
+    "source_reference_accuracy": 1.0,
+    "claims_checked": 1,
+    "claims_exactly_copied": 1,
+    "semantic_faithfulness": null,
+    "note": "Exact-copy and metadata checks do not establish question relevance, entailment or completeness."
+  },
+  "diagnostic": {
+    "created_utc": "2026-11-06T18:41:25.582475+00:00",
+    "stage": "accepted",
+    "reason": "supported",
+    "detail": null,
+    "status": "answered",
+    "retrieved_source_ids": [
+      "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+      "c2e9f680-7144-55a9-a71a-02e91846ece8",
+      "e4fad712-dd84-5294-ab8b-48e1c99c4c01"
+    ],
+    "supplied_source_ids": [
+      "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+      "c2e9f680-7144-55a9-a71a-02e91846ece8",
+      "e4fad712-dd84-5294-ab8b-48e1c99c4c01"
+    ],
+    "sanitized_raw_model_draft": {
+      "representation": "sanitized_json_structure",
+      "bytes": 96,
+      "draft": {
+        "status": "answered",
+        "reason": "supported",
+        "selection_ids": [
+          "X847f17fb107ef9689207164b5ee810ca"
+        ],
+        "withheld_unknown_fields": 0
+      },
+      "comparisons": [],
+      "warning": "Text/unknown values withheld; comparisons are diagnostics, never support evidence."
+    }
+  },
+  "receipt": {
+    "attempt": 1,
+    "error": null,
+    "supplied_source_ids": [
+      "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+      "c2e9f680-7144-55a9-a71a-02e91846ece8",
+      "e4fad712-dd84-5294-ab8b-48e1c99c4c01"
+    ],
+    "provider_latency_ms": 1238.3811000036076,
+    "http_status": 200,
+    "usage": {
+      "prompt_tokens": 1348,
+      "completion_tokens": 93,
+      "total_tokens": 1441,
+      "reasoning_tokens": 51
+    },
+    "rate_limits": {
+      "x-ratelimit-limit-requests": "1000",
+      "x-ratelimit-limit-tokens": "8000",
+      "x-ratelimit-remaining-requests": "999",
+      "x-ratelimit-remaining-tokens": "5670",
+      "x-ratelimit-reset-requests": "1m26.4s",
+      "x-ratelimit-reset-tokens": "17.475s"
+    },
+    "returned_model_matches": true
+  },
+  "automated_checks": {
+    "one_attempt": true,
+    "http_200": true,
+    "model_matches": true,
+    "answered": true,
+    "native_expected_selection": true,
+    "canonical_arabic_answer": true,
+    "correct_citation": true,
+    "real_generation_mode": true,
+    "contract_valid": true,
+    "validation_accepted": true
+  },
+  "automated_outcome": "PASS",
+  "semantic_review": "pending direct inspection of original synthetic source",
+  "account_status_basis": "Existing explicit user Free-plan confirmation and unchanged local guards; no billing API query",
+  "paid_calls_enabled": false,
+  "expected_free_plan_charge_usd": "0",
+  "recorded_provider_cost_usd": null,
+  "full_evaluation_executed": false
+}

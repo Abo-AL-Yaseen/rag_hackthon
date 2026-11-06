@@ -1,0 +1,80 @@
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+.local/
+*.pem
+*.key
+# Python and tools
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+# Local documents, indexes, model weights, uploads and conversation logs
+data/raw/
+data/processed/
+data/uploads/
+data/index/
+models/
+.cache/
+logs/
+tmp/
+*.log
+# Editor/OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+# Curated, licensed sample data and reviewed evaluation evidence should be tracked.
+
+# Organizer material and historical paid-call template stay private.
+/IEEE_RAG_Hackathon_Judging_Guide_AR.pdf
+/config/phase3_smoke.env.example
+# Historical report writers are retained locally, outside the runtime handoff.
+/scripts/write_phase*_report.py
+# Archives and database files require an explicit reviewed exception.
+*.zip
+*.7z
+*.tar
+*.gz
+*.sqlite
+*.sqlite3
+*.db
+*.safetensors
+*.onnx
+
+# Publish only reviewed documentation and evidence. Other history stays local.
+/docs/*
+!/docs/integration_contract.md
+!/docs/rag_response.schema.json
+!/docs/final_backend_handoff.md
+!/docs/hackathon_readiness.md
+!/docs/ai_attribution.md
+!/docs/faithfulness_evaluation.md
+!/docs/architecture_and_evaluation.md
+!/docs/phase3_live_protocol.md
+!/docs/business_marketing_template.md
+!/docs/development_window.md
+!/docs/presentation_outline.md
+!/docs/submission_checklist.md
+!/docs/judging_rehearsal.md
+!/docs/evidence/
+/docs/evidence/*
+!/docs/evidence/model_manifest.json
+!/docs/evidence/wheel_manifest.json
+!/docs/evidence/groq_live_smoke_results.json
+!/docs/evidence/phase31_source_manifest.json
+!/docs/evidence/phase1_evaluation.json
+!/docs/evidence/phase2_contract_examples.json
+!/docs/evidence/phase2_evaluation.json
+!/docs/evidence/phase2_review_queue.json
+!/docs/evidence/phase3_offline_evaluation.json
+!/docs/evidence/phase4_workflow.json
+!/docs/evidence/phase4_contract_examples.json
+!/docs/evidence/phase32_live_arabic_result.json
+!/docs/evidence/phase32_semantic_review.json
+!/docs/evidence/publication_checks.json

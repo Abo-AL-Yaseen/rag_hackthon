@@ -1,0 +1,2739 @@
+{
+  "synthetic": true,
+  "notice": "Preparation fixtures only; not hackathon performance or held-out validation.",
+  "created_utc": "2026-11-06T16:07:56.253925+00:00",
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "packages": {
+    "torch": "2.8.0+cpu",
+    "sentence-transformers": "5.1.2",
+    "transformers": "4.57.1",
+    "qdrant-client": "1.15.1",
+    "rank-bm25": "0.2.2",
+    "pytest": "8.4.2",
+    "scikit-learn": "1.7.2",
+    "python-dotenv": "1.2.1",
+    "fastapi": "0.120.4",
+    "numpy": "2.2.6",
+    "scipy": "1.16.3",
+    "psutil": "7.1.3",
+    "PyMuPDF": "1.26.6"
+  },
+  "cpu_only": {
+    "torch_cuda_build": null,
+    "cuda_available": false,
+    "model_device": "cpu",
+    "torch_threads": 4
+  },
+  "model_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+  "embedding_dimension": 384,
+  "prefixes": {
+    "query": "query: ",
+    "passage": "passage: "
+  },
+  "max_sequence_length": 512,
+  "config": {
+    "chunk_tokens": 240,
+    "overlap_tokens": 32,
+    "threads": 4,
+    "batch_size": 4,
+    "k": [
+      1,
+      3
+    ]
+  },
+  "corpus_sha256": "748e82e014b63d9453db6adb2a15da3e0e2e654f4ed23c814a2fd2ef9e5faf3c",
+  "pages": 12,
+  "chunks": 12,
+  "embedding_smoke": {
+    "queries": [
+      "كيف أعيد تعيين كلمة المرور؟",
+      "When can I borrow books?"
+    ],
+    "passages": [
+      "Reset your password using account recovery in the support portal.",
+      "The library lets members borrow books for twelve days."
+    ],
+    "cosine_matrix": [
+      [
+        0.7910171151161194,
+        0.6582447290420532
+      ],
+      [
+        0.7538877725601196,
+        0.8430452346801758
+      ]
+    ],
+    "passed": true
+  },
+  "model_initialization_seconds": 2.555978199990932,
+  "dense_index_build_or_open_seconds": 0.8701112999988254,
+  "index_was_existing": false,
+  "qdrant_reopen_and_query_seconds": 0.10270329999912065,
+  "bm25_build_seconds": 0.004458199997316115,
+  "dense": {
+    "summary": {
+      "1": {
+        "questions_total": 14,
+        "questions_scored": 12,
+        "errors": 0,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "latency_ms_p50": 64.5463499968173,
+        "latency_ms_p95": 73.0427700036671,
+        "latency_n": 42,
+        "percentile_method": "numpy linear",
+        "repeats_per_question": 3
+      },
+      "3": {
+        "questions_total": 14,
+        "questions_scored": 12,
+        "errors": 0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0,
+        "latency_ms_p50": 64.5463499968173,
+        "latency_ms_p95": 73.0427700036671,
+        "latency_n": 42,
+        "percentile_method": "numpy linear",
+        "repeats_per_question": 3
+      }
+    },
+    "cases": [
+      {
+        "id": "q01",
+        "language": "ar",
+        "question": "كم يوماً يمكن استعارة الكتب؟",
+        "reference_answer": "اثنا عشر يوماً.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.877010338975571,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.817538692262954,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8174987960669762,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          62.133100000210106,
+          58.07360001199413,
+          65.46899999375455
+        ],
+        "latency_ms": 62.133100000210106,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q02",
+        "language": "en",
+        "question": "What are the library opening hours on Saturday?",
+        "reference_answer": "09:00 to 17:00.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "c2e9f680-7144-55a9-a71a-02e91846ece8"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8617886368904961,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.769185430141086,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7652197156001909,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          },
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          66.774599996279,
+          64.59789999644272,
+          62.7634999982547
+        ],
+        "latency_ms": 64.59789999644272,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q03",
+        "language": "ar",
+        "question": "كيف أجدد الكتاب وكم مرة يمكنني ذلك؟",
+        "reference_answer": "عبر بوابة المكتبة قبل الإرجاع، مرة واحدة.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 3
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "e4fad712-dd84-5294-ab8b-48e1c99c4c01"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8685550405836384,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8198922000333695,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8017265933888056,
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "text": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address.",
+            "start": 0,
+            "end": 196,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          },
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "quote": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          63.17620001209434,
+          61.25600000086706,
+          61.62419999600388
+        ],
+        "latency_ms": 61.62419999600388,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q04",
+        "language": "en",
+        "question": "What eye protection is mandatory for chemistry experiments?",
+        "reference_answer": "Safety goggles.",
+        "relevant_sources": [
+          {
+            "document_id": "laboratory",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "f2a44d69-75dd-5209-9e6e-fb39536c0205"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8541350605481889,
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "text": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited.",
+            "start": 0,
+            "end": 159,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7702634149291092,
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "text": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services.",
+            "start": 0,
+            "end": 227,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7620686659602431,
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor.",
+            "start": 0,
+            "end": 188,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "quote": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited."
+          },
+          {
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "quote": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services."
+          },
+          {
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "quote": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          64.49479999719188,
+          63.93760000355542,
+          66.99520000256598
+        ],
+        "latency_ms": 64.49479999719188,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q05",
+        "language": "ar",
+        "question": "شو لازم أعمل قبل ما أحجز الطابعة ثلاثية الأبعاد؟",
+        "reference_answer": "إكمال تدريب السلامة وإرسال طلب للمشرف.",
+        "relevant_sources": [
+          {
+            "document_id": "laboratory",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "af5fd58b-f16a-51fe-860b-459c7e79dfaf"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8692753037830576,
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor.",
+            "start": 0,
+            "end": 188,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.804485113679101,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8002522294385408,
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "text": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services.",
+            "start": 0,
+            "end": 227,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "quote": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+          },
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          },
+          {
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "quote": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          67.3530999920331,
+          64.02859999798238,
+          62.86989999352954
+        ],
+        "latency_ms": 64.02859999798238,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q06",
+        "language": "en",
+        "question": "Where and when does the Example Lab shuttle leave?",
+        "reference_answer": "North gate at 08:00.",
+        "relevant_sources": [
+          {
+            "document_id": "transport",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "e8469d89-b5d0-5a86-9726-d9e4a88c16db"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8408420801108432,
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "text": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00.",
+            "start": 0,
+            "end": 129,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7838530175335761,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7662281252632439,
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "text": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "quote": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          },
+          {
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "quote": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          65.88989999727346,
+          60.853999995742925,
+          63.197100011166185
+        ],
+        "latency_ms": 63.197100011166185,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q07",
+        "language": "ar",
+        "question": "وين بلاقي الأغراض الضايعة من الحافلة؟",
+        "reference_answer": "مكتب النقل، الغرفة 24.",
+        "relevant_sources": [
+          {
+            "document_id": "transport",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "dee8361e-f025-51f8-9984-22c8284536bb"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8068600841570148,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7993383309868625,
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "text": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00.",
+            "start": 0,
+            "end": 129,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7841835702537503,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          },
+          {
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "quote": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00."
+          },
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          70.55499999842141,
+          63.39670000306796,
+          63.289100013207644
+        ],
+        "latency_ms": 63.39670000306796,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q08",
+        "language": "en",
+        "question": "How do I recover access after forgetting my password?",
+        "reference_answer": "Support portal, account recovery, then confirm email.",
+        "relevant_sources": [
+          {
+            "document_id": "support",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "7f2e3aa0-763b-5280-9155-6e6594d12444"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8420667525998966,
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "text": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address.",
+            "start": 0,
+            "end": 196,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7987484192111831,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7822334799615881,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "quote": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address."
+          },
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          66.20269999257289,
+          61.39590000384487,
+          58.31340000440832
+        ],
+        "latency_ms": 61.39590000384487,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q09",
+        "language": "ar",
+        "question": "ما أكبر حجم مرفق مسموح في تذكرة الدعم؟",
+        "reference_answer": "عشرة ميغابايت.",
+        "relevant_sources": [
+          {
+            "document_id": "support",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "8ddfd1ba-235f-53ea-97d6-eaa40173ef96"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8958949945216035,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7948699347095799,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7805734615477027,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          },
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          61.915500002214685,
+          64.32069999573287,
+          69.7962000122061
+        ],
+        "latency_ms": 64.32069999573287,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q10",
+        "language": "en",
+        "question": "How long is the introductory Python session and do beginners qualify?",
+        "reference_answer": "Two hours; no previous programming experience required.",
+        "relevant_sources": [
+          {
+            "document_id": "training",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "dae756d0-ac93-52eb-98ee-3e364a295537"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8411146472797039,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7610193269465202,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7519029901530907,
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "text": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services.",
+            "start": 0,
+            "end": 227,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          },
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "quote": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          80.3550999989966,
+          67.09399999817833,
+          68.22760000068229
+        ],
+        "latency_ms": 68.22760000068229,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q11",
+        "language": "ar",
+        "question": "متى آخر موعد للتسجيل في ورشة الروبوتات؟",
+        "reference_answer": "الثلاثاء الساعة الثانية ظهراً.",
+        "relevant_sources": [
+          {
+            "document_id": "training",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "9e61bd50-52c9-5b51-847b-2590fe42480b"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.8865298017919321,
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "text": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.8071606554449368,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7797230394600073,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "quote": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00."
+          },
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          },
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          62.172399993869476,
+          68.431599996984,
+          62.97410000115633
+        ],
+        "latency_ms": 62.97410000115633,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q12",
+        "language": "en",
+        "question": "Where should experimental records be kept and may personal data go to public services?",
+        "reference_answer": "Encrypted project storage; personal data must not be uploaded to public services.",
+        "relevant_sources": [
+          {
+            "document_id": "research",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "a08e67a4-84a2-5806-80ce-a5e38e8a0248"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.849384073346247,
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "text": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services.",
+            "start": 0,
+            "end": 227,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7630841577685532,
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "text": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited.",
+            "start": 0,
+            "end": 159,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7613794915573847,
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor.",
+            "start": 0,
+            "end": 188,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "quote": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services."
+          },
+          {
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "quote": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited."
+          },
+          {
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "quote": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          69.08330001169816,
+          69.96069999877363,
+          66.82349999027792
+        ],
+        "latency_ms": 69.08330001169816,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q13",
+        "language": "ar",
+        "question": "ما سعر تذكرة السفر إلى المريخ؟",
+        "reference_answer": "غير موجود في المصادر.",
+        "relevant_sources": [],
+        "answerable": false,
+        "relevant_chunk_ids": [],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.7909962485998533,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7312621300177494,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7287417888850298,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          },
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          69.39589999092277,
+          72.83889999962412,
+          73.05350000387989
+        ],
+        "latency_ms": 72.83889999962412,
+        "precision@1": null,
+        "recall@1": null,
+        "precision@3": null,
+        "recall@3": null
+      },
+      {
+        "id": "q14",
+        "language": "en",
+        "question": "What is the library late return fine?",
+        "reference_answer": "Not specified in these sources.",
+        "relevant_sources": [],
+        "answerable": false,
+        "relevant_chunk_ids": [],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 0.790557831258863,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.771518617196238,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7627848286423279,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          },
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          },
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          68.15000000642613,
+          78.74209999863524,
+          59.90690000180621
+        ],
+        "latency_ms": 68.15000000642613,
+        "precision@1": null,
+        "recall@1": null,
+        "precision@3": null,
+        "recall@3": null
+      }
+    ]
+  },
+  "bm25": {
+    "summary": {
+      "1": {
+        "questions_total": 14,
+        "questions_scored": 12,
+        "errors": 0,
+        "precision@1": 0.9166666666666666,
+        "recall@1": 0.9166666666666666,
+        "latency_ms_p50": 0.47980000090319663,
+        "latency_ms_p95": 0.9043050013133324,
+        "latency_n": 42,
+        "percentile_method": "numpy linear",
+        "repeats_per_question": 3
+      },
+      "3": {
+        "questions_total": 14,
+        "questions_scored": 12,
+        "errors": 0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0,
+        "latency_ms_p50": 0.47980000090319663,
+        "latency_ms_p95": 0.9043050013133324,
+        "latency_n": 42,
+        "percentile_method": "numpy linear",
+        "repeats_per_question": 3
+      }
+    },
+    "cases": [
+      {
+        "id": "q01",
+        "language": "ar",
+        "question": "كم يوماً يمكن استعارة الكتب؟",
+        "reference_answer": "اثنا عشر يوماً.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 4.3652498959621315,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 3.798095623764946,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.3302999975858256,
+          0.32899998768698424,
+          0.31350000062957406
+        ],
+        "latency_ms": 0.32899998768698424,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q02",
+        "language": "en",
+        "question": "What are the library opening hours on Saturday?",
+        "reference_answer": "09:00 to 17:00.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "c2e9f680-7144-55a9-a71a-02e91846ece8"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 5.298394869730647,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 3.514879112784544,
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "text": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited.",
+            "start": 0,
+            "end": 159,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 2.690651557687303,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          },
+          {
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "quote": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited."
+          },
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.5029000021750107,
+          0.4791000101249665,
+          0.5081999988760799
+        ],
+        "latency_ms": 0.5029000021750107,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q03",
+        "language": "ar",
+        "question": "كيف أجدد الكتاب وكم مرة يمكنني ذلك؟",
+        "reference_answer": "عبر بوابة المكتبة قبل الإرجاع، مرة واحدة.",
+        "relevant_sources": [
+          {
+            "document_id": "library",
+            "page": 3
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "e4fad712-dd84-5294-ab8b-48e1c99c4c01"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 1.899047811882473,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.5576000112341717,
+          0.48049999168142676,
+          0.4140000091865659
+        ],
+        "latency_ms": 0.48049999168142676,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q04",
+        "language": "en",
+        "question": "What eye protection is mandatory for chemistry experiments?",
+        "reference_answer": "Safety goggles.",
+        "relevant_sources": [
+          {
+            "document_id": "laboratory",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "f2a44d69-75dd-5209-9e6e-fb39536c0205"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 2.1826249479810658,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 2.142631141672624,
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "text": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited.",
+            "start": 0,
+            "end": 159,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.356161828409417,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "f2a44d69-75dd-5209-9e6e-fb39536c0205",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 1,
+            "quote": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.4901000065729022,
+          0.46720000682398677,
+          0.45279999903868884
+        ],
+        "latency_ms": 0.46720000682398677,
+        "precision@1": 0.0,
+        "recall@1": 0.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q05",
+        "language": "ar",
+        "question": "شو لازم أعمل قبل ما أحجز الطابعة ثلاثية الأبعاد؟",
+        "reference_answer": "إكمال تدريب السلامة وإرسال طلب للمشرف.",
+        "relevant_sources": [
+          {
+            "document_id": "laboratory",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "af5fd58b-f16a-51fe-860b-459c7e79dfaf"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 3.737398031671633,
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor.",
+            "start": 0,
+            "end": 188,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.899047811882473,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "quote": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.5573999951593578,
+          0.513400009367615,
+          0.5175999976927415
+        ],
+        "latency_ms": 0.5175999976927415,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q06",
+        "language": "en",
+        "question": "Where and when does the Example Lab shuttle leave?",
+        "reference_answer": "North gate at 08:00.",
+        "relevant_sources": [
+          {
+            "document_id": "transport",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "e8469d89-b5d0-5a86-9726-d9e4a88c16db"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 6.614230290625849,
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "text": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00.",
+            "start": 0,
+            "end": 129,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 2.045794334696524,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.9330754266209711,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "quote": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.6674999895039946,
+          0.5982000002404675,
+          0.5274999857647344
+        ],
+        "latency_ms": 0.5982000002404675,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q07",
+        "language": "ar",
+        "question": "وين بلاقي الأغراض الضايعة من الحافلة؟",
+        "reference_answer": "مكتب النقل، الغرفة 24.",
+        "relevant_sources": [
+          {
+            "document_id": "transport",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "dee8361e-f025-51f8-9984-22c8284536bb"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 3.252600535034123,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.0699755870530574,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.0699755870530574,
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "text": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00.",
+            "start": 0,
+            "end": 129,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          },
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          },
+          {
+            "chunk_id": "e8469d89-b5d0-5a86-9726-d9e4a88c16db",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 1,
+            "quote": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.4253999941283837,
+          0.36750000435858965,
+          0.37859998701605946
+        ],
+        "latency_ms": 0.37859998701605946,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q08",
+        "language": "en",
+        "question": "How do I recover access after forgetting my password?",
+        "reference_answer": "Support portal, account recovery, then confirm email.",
+        "relevant_sources": [
+          {
+            "document_id": "support",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "7f2e3aa0-763b-5280-9155-6e6594d12444"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 1.3165913076048832,
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "text": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address.",
+            "start": 0,
+            "end": 196,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.3165913076048832,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "quote": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address."
+          },
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.5535999953281134,
+          0.49819999549072236,
+          0.5277000018395483
+        ],
+        "latency_ms": 0.5277000018395483,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q09",
+        "language": "ar",
+        "question": "ما أكبر حجم مرفق مسموح في تذكرة الدعم؟",
+        "reference_answer": "عشرة ميغابايت.",
+        "relevant_sources": [
+          {
+            "document_id": "support",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "8ddfd1ba-235f-53ea-97d6-eaa40173ef96"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 3.768766256211339,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.3165913076048832,
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "text": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address.",
+            "start": 0,
+            "end": 196,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7219206066759392,
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "text": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          },
+          {
+            "chunk_id": "7f2e3aa0-763b-5280-9155-6e6594d12444",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 1,
+            "quote": "لإعادة تعيين كلمة المرور افتح بوابة الدعم واختر استعادة الحساب ثم أكد عنوان بريدك الإلكتروني. To reset a password, open the support portal, choose account recovery, and confirm your email address."
+          },
+          {
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "quote": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.5052000051364303,
+          0.4614000063156709,
+          0.5177999992156401
+        ],
+        "latency_ms": 0.5052000051364303,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q10",
+        "language": "en",
+        "question": "How long is the introductory Python session and do beginners qualify?",
+        "reference_answer": "Two hours; no previous programming experience required.",
+        "relevant_sources": [
+          {
+            "document_id": "training",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "dae756d0-ac93-52eb-98ee-3e364a295537"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 3.022998698282499,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 2.2892372550303883,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.5780021967592943,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.8721000049263239,
+          0.906000001123175,
+          0.5226000066613778
+        ],
+        "latency_ms": 0.8721000049263239,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q11",
+        "language": "ar",
+        "question": "متى آخر موعد للتسجيل في ورشة الروبوتات؟",
+        "reference_answer": "الثلاثاء الساعة الثانية ظهراً.",
+        "relevant_sources": [
+          {
+            "document_id": "training",
+            "page": 2
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "9e61bd50-52c9-5b51-847b-2590fe42480b"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 4.663002995143945,
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "text": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.899047811882473,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.537767724990287,
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience.",
+            "start": 0,
+            "end": 153,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "9e61bd50-52c9-5b51-847b-2590fe42480b",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 2,
+            "quote": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00."
+          },
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          },
+          {
+            "chunk_id": "dae756d0-ac93-52eb-98ee-3e364a295537",
+            "document_id": "training",
+            "source": "synthetic_training.json",
+            "page": 1,
+            "quote": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.31430000672116876,
+          0.2351000002818182,
+          0.2201999886892736
+        ],
+        "latency_ms": 0.2351000002818182,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q12",
+        "language": "en",
+        "question": "Where should experimental records be kept and may personal data go to public services?",
+        "reference_answer": "Encrypted project storage; personal data must not be uploaded to public services.",
+        "relevant_sources": [
+          {
+            "document_id": "research",
+            "page": 1
+          }
+        ],
+        "answerable": true,
+        "relevant_chunk_ids": [
+          "a08e67a4-84a2-5806-80ce-a5e38e8a0248"
+        ],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 10.760567086400938,
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "text": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services.",
+            "start": 0,
+            "end": 227,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 2.1826249479810658,
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days.",
+            "start": 0,
+            "end": 130,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.7008611457884926,
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor.",
+            "start": 0,
+            "end": 188,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "a08e67a4-84a2-5806-80ce-a5e38e8a0248",
+            "document_id": "research",
+            "source": "synthetic_research.json",
+            "page": 1,
+            "quote": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services."
+          },
+          {
+            "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 1,
+            "quote": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+          },
+          {
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "quote": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.4228999896440655,
+          1.0917000035988167,
+          1.3371999957598746
+        ],
+        "latency_ms": 1.0917000035988167,
+        "precision@1": 1.0,
+        "recall@1": 1.0,
+        "precision@3": 0.3333333333333333,
+        "recall@3": 1.0
+      },
+      {
+        "id": "q13",
+        "language": "ar",
+        "question": "ما سعر تذكرة السفر إلى المريخ؟",
+        "reference_answer": "غير موجود في المصادر.",
+        "relevant_sources": [],
+        "answerable": false,
+        "relevant_chunk_ids": [],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 1.8686990158358165,
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "text": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket.",
+            "start": 0,
+            "end": 189,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.0699755870530574,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 0.9160814955147958,
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor.",
+            "start": 0,
+            "end": 188,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "8ddfd1ba-235f-53ea-97d6-eaa40173ef96",
+            "document_id": "support",
+            "source": "synthetic_support.json",
+            "page": 2,
+            "quote": "يبلغ الحد الأعلى للمرفق في تذكرة الدعم عشرة ميغابايت. لا ترسل كلمة المرور داخل التذكرة. The maximum support ticket attachment size is ten megabytes. Never include your password in a ticket."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          },
+          {
+            "chunk_id": "af5fd58b-f16a-51fe-860b-459c7e79dfaf",
+            "document_id": "laboratory",
+            "source": "synthetic_laboratory.json",
+            "page": 2,
+            "quote": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.44800000614486635,
+          0.37170000723563135,
+          0.36779999209102243
+        ],
+        "latency_ms": 0.37170000723563135,
+        "precision@1": null,
+        "recall@1": null,
+        "precision@3": null,
+        "recall@3": null
+      },
+      {
+        "id": "q14",
+        "language": "en",
+        "question": "What is the library late return fine?",
+        "reference_answer": "Not specified in these sources.",
+        "relevant_sources": [],
+        "answerable": false,
+        "relevant_chunk_ids": [],
+        "error": null,
+        "retrieved": [
+          {
+            "score": 2.931029464234175,
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once.",
+            "start": 0,
+            "end": 168,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.5780021967592943,
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00.",
+            "start": 0,
+            "end": 117,
+            "version": "synthetic-v1"
+          },
+          {
+            "score": 1.5780021967592943,
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24.",
+            "start": 0,
+            "end": 125,
+            "version": "synthetic-v1"
+          }
+        ],
+        "citations": [
+          {
+            "chunk_id": "e4fad712-dd84-5294-ab8b-48e1c99c4c01",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 3,
+            "quote": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+          },
+          {
+            "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+            "document_id": "library",
+            "source": "synthetic_library.json",
+            "page": 2,
+            "quote": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+          },
+          {
+            "chunk_id": "dee8361e-f025-51f8-9984-22c8284536bb",
+            "document_id": "transport",
+            "source": "synthetic_transport.json",
+            "page": 2,
+            "quote": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+          }
+        ],
+        "all_citations_valid": true,
+        "latency_samples_ms": [
+          0.4371999966679141,
+          0.4182999982731417,
+          0.3963000053772703
+        ],
+        "latency_ms": 0.4182999982731417,
+        "precision@1": null,
+        "recall@1": null,
+        "precision@3": null,
+        "recall@3": null
+      }
+    ]
+  },
+  "benchmark": {
+    "synthetic": true,
+    "grid": [
+      {
+        "threads": 1,
+        "batch_size": 1,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          1.6621322999999393,
+          3.6389815000002272,
+          2.0664573999965796,
+          3.2069450999988476,
+          1.7926786000025459
+        ],
+        "median_seconds": 2.0664573999965796,
+        "chunks_per_second": 3.871359748337053,
+        "prefixed_tokens_per_second": 853.6348245083202
+      },
+      {
+        "threads": 1,
+        "batch_size": 4,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          5.787347599994973,
+          3.54904080000415,
+          5.121328199995332,
+          3.922329900000477,
+          3.547293299998273
+        ],
+        "median_seconds": 3.922329900000477,
+        "chunks_per_second": 2.039604062880847,
+        "prefixed_tokens_per_second": 449.7326958652268
+      },
+      {
+        "threads": 1,
+        "batch_size": 8,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          6.206880400000955,
+          6.608489699996426,
+          5.24011210000026,
+          5.631028500007233,
+          6.214884699991671
+        ],
+        "median_seconds": 6.206880400000955,
+        "chunks_per_second": 1.288892242872727,
+        "prefixed_tokens_per_second": 284.20073955343634
+      },
+      {
+        "threads": 2,
+        "batch_size": 1,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          2.3172791999968467,
+          2.2329982000082964,
+          1.050995800003875,
+          1.0209359000000404,
+          1.9983540000102948
+        ],
+        "median_seconds": 1.9983540000102948,
+        "chunks_per_second": 4.00329471152698,
+        "prefixed_tokens_per_second": 882.7264838916991
+      },
+      {
+        "threads": 2,
+        "batch_size": 4,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          3.2732804999977816,
+          3.270532700000331,
+          2.148287899995921,
+          2.2786956999916583,
+          4.3872331000020495
+        ],
+        "median_seconds": 3.270532700000331,
+        "chunks_per_second": 2.4460847005135253,
+        "prefixed_tokens_per_second": 539.3616764632322
+      },
+      {
+        "threads": 2,
+        "batch_size": 8,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          5.180765299999621,
+          3.4047251000010874,
+          4.55860850001045,
+          2.7662567000079434,
+          3.599191499990411
+        ],
+        "median_seconds": 3.599191499990411,
+        "chunks_per_second": 2.222721408411115,
+        "prefixed_tokens_per_second": 490.11007055465086
+      },
+      {
+        "threads": 4,
+        "batch_size": 1,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          1.763820099993609,
+          1.9498445999925025,
+          1.0529500999982702,
+          0.8752156999980798,
+          1.9242055999930017
+        ],
+        "median_seconds": 1.763820099993609,
+        "chunks_per_second": 4.535609952528032,
+        "prefixed_tokens_per_second": 1000.1019945324309
+      },
+      {
+        "threads": 4,
+        "batch_size": 4,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          2.2172359000105644,
+          1.776139499997953,
+          1.0406695999990916,
+          2.1473146000062115,
+          2.2685370999970473
+        ],
+        "median_seconds": 2.1473146000062115,
+        "chunks_per_second": 3.7255835730716207,
+        "prefixed_tokens_per_second": 821.4911778622924
+      },
+      {
+        "threads": 4,
+        "batch_size": 8,
+        "warmup_batches": 3,
+        "measured_repetitions": 5,
+        "passages_per_repetition": 8,
+        "prefixed_token_lengths": [
+          36,
+          132,
+          260,
+          454,
+          36,
+          132,
+          260,
+          454
+        ],
+        "seconds": [
+          2.5013786000054097,
+          3.5695785000134492,
+          2.917140699995798,
+          1.5902981000108412,
+          3.257486400005291
+        ],
+        "median_seconds": 2.917140699995798,
+        "chunks_per_second": 2.742411430484489,
+        "prefixed_tokens_per_second": 604.7017204218298
+      }
+    ],
+    "single_query_encoding": {
+      "threads": 4,
+      "batch_size": 4,
+      "n": 30,
+      "samples_ms": [
+        50.76470000494737,
+        55.69300000206567,
+        60.27249999169726,
+        57.117899996228516,
+        57.675800009747036,
+        57.65129999781493,
+        64.28370000503492,
+        63.77720000455156,
+        63.89790000685025,
+        58.983199996873736,
+        56.95870000636205,
+        59.057600010419264,
+        46.91540000203531,
+        53.831800003536046,
+        58.1957000104012,
+        55.7286999974167,
+        54.18699998699594,
+        48.60969999572262,
+        56.16799999552313,
+        43.3638999966206,
+        63.04880000243429,
+        83.20069999899715,
+        40.66460000467487,
+        31.289400008972734,
+        29.431300004944205,
+        31.433899988769554,
+        27.948600007221103,
+        21.409099994343705,
+        27.938899991568178,
+        27.527600002940744
+      ],
+      "p50_ms": 55.710849999741185,
+      "p95_ms": 64.11009000585182
+    },
+    "limitations": [
+      "Sequential laptop run; no AC/thermal control.",
+      "Synthetic repeated text throughput is not real-corpus retrieval quality.",
+      "Model OS file cache may be warm; initialization is not disk-cold guaranteed."
+    ]
+  },
+  "faithfulness": {
+    "status": "not evaluated",
+    "reason": "Retrieval and exact-quote citations only; no generated answers."
+  },
+  "refusal": {
+    "status": "not implemented",
+    "reason": "Dense nearest neighbors do not establish answerability. Unanswerable cases excluded from P/R."
+  },
+  "limitations": [
+    "12 bilingual passages and 12 answerable questions; easy self-authored synthetic data.",
+    "Two unanswerable probes have N/A retrieval relevance metrics, not passing refusal scores.",
+    "All relevant passages are page-level labels on short one-chunk pages.",
+    "Latency includes query encoding for dense and tokenization for BM25; excludes citations/report serialization.",
+    "No hybrid/reranker/base model, generation API, or real challenge evaluation."
+  ],
+  "memory": {
+    "initial_rss_bytes": 35635200,
+    "sampled_peak_rss_bytes": 896413696,
+    "minimum_system_available_bytes": 5950541824,
+    "samples": 3837,
+    "sampling_interval_seconds": 0.05,
+    "limitation": "Sampled RSS can miss peaks between samples; not GPU memory."
+  }
+}

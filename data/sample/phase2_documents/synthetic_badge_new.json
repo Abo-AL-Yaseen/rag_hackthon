@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "version": "2026",
+  "pages": [
+    {
+      "document_id": "badge_policy",
+      "source": "synthetic_badge_new.json",
+      "page": 1,
+      "text": "A visitor badge is valid for five days. This synthetic version has no trusted priority designation."
+    }
+  ]
+}

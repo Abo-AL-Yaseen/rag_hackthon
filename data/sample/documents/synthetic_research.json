@@ -1,0 +1,13 @@
+{
+  "synthetic": true,
+  "version": "synthetic-v1",
+  "notice": "Invented preparation fixtures. Not Bethlehem University policy, challenge data, or business evidence.",
+  "pages": [
+    {
+      "document_id": "research",
+      "source": "synthetic_research.json",
+      "page": 1,
+      "text": "تُحفظ بيانات التجارب في مساحة المشروع المشفرة. لا يجوز رفع بيانات المشاركين الشخصية إلى خدمات عامة. Experiment data must be stored in encrypted project storage. Personal participant data must not be uploaded to public services."
+    }
+  ]
+}

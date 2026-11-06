@@ -1,0 +1,20 @@
+{
+  "synthetic":true,
+  "split":"preparation-only, no held-out generalization claim",
+  "questions":[
+    {"id":"q01","language":"ar","question":"كم يوماً يمكن استعارة الكتب؟","reference_answer":"اثنا عشر يوماً.","relevant_sources":[{"document_id":"library","page":1}],"answerable":true},
+    {"id":"q02","language":"en","question":"What are the library opening hours on Saturday?","reference_answer":"09:00 to 17:00.","relevant_sources":[{"document_id":"library","page":2}],"answerable":true},
+    {"id":"q03","language":"ar","question":"كيف أجدد الكتاب وكم مرة يمكنني ذلك؟","reference_answer":"عبر بوابة المكتبة قبل الإرجاع، مرة واحدة.","relevant_sources":[{"document_id":"library","page":3}],"answerable":true},
+    {"id":"q04","language":"en","question":"What eye protection is mandatory for chemistry experiments?","reference_answer":"Safety goggles.","relevant_sources":[{"document_id":"laboratory","page":1}],"answerable":true},
+    {"id":"q05","language":"ar","question":"شو لازم أعمل قبل ما أحجز الطابعة ثلاثية الأبعاد؟","reference_answer":"إكمال تدريب السلامة وإرسال طلب للمشرف.","relevant_sources":[{"document_id":"laboratory","page":2}],"answerable":true},
+    {"id":"q06","language":"en","question":"Where and when does the Example Lab shuttle leave?","reference_answer":"North gate at 08:00.","relevant_sources":[{"document_id":"transport","page":1}],"answerable":true},
+    {"id":"q07","language":"ar","question":"وين بلاقي الأغراض الضايعة من الحافلة؟","reference_answer":"مكتب النقل، الغرفة 24.","relevant_sources":[{"document_id":"transport","page":2}],"answerable":true},
+    {"id":"q08","language":"en","question":"How do I recover access after forgetting my password?","reference_answer":"Support portal, account recovery, then confirm email.","relevant_sources":[{"document_id":"support","page":1}],"answerable":true},
+    {"id":"q09","language":"ar","question":"ما أكبر حجم مرفق مسموح في تذكرة الدعم؟","reference_answer":"عشرة ميغابايت.","relevant_sources":[{"document_id":"support","page":2}],"answerable":true},
+    {"id":"q10","language":"en","question":"How long is the introductory Python session and do beginners qualify?","reference_answer":"Two hours; no previous programming experience required.","relevant_sources":[{"document_id":"training","page":1}],"answerable":true},
+    {"id":"q11","language":"ar","question":"متى آخر موعد للتسجيل في ورشة الروبوتات؟","reference_answer":"الثلاثاء الساعة الثانية ظهراً.","relevant_sources":[{"document_id":"training","page":2}],"answerable":true},
+    {"id":"q12","language":"en","question":"Where should experimental records be kept and may personal data go to public services?","reference_answer":"Encrypted project storage; personal data must not be uploaded to public services.","relevant_sources":[{"document_id":"research","page":1}],"answerable":true},
+    {"id":"q13","language":"ar","question":"ما سعر تذكرة السفر إلى المريخ؟","reference_answer":"غير موجود في المصادر.","relevant_sources":[],"answerable":false},
+    {"id":"q14","language":"en","question":"What is the library late return fine?","reference_answer":"Not specified in these sources.","relevant_sources":[],"answerable":false}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "version": "synthetic-v1",
+  "notice": "Invented preparation fixtures. Not Bethlehem University policy, challenge data, or business evidence.",
+  "pages": [
+    {
+      "document_id": "laboratory",
+      "source": "synthetic_laboratory.json",
+      "page": 1,
+      "text": "يجب ارتداء نظارات الحماية داخل مختبر الكيمياء. الطعام والشراب ممنوعان. Safety goggles are required in the chemistry laboratory. Food and drinks are prohibited."
+    },
+    {
+      "document_id": "laboratory",
+      "source": "synthetic_laboratory.json",
+      "page": 2,
+      "text": "لحجز جهاز الطباعة ثلاثية الأبعاد يجب إكمال تدريب السلامة ثم إرسال طلب إلى مشرف المختبر. To reserve the 3D printer, complete safety training and send a request to the laboratory supervisor."
+    }
+  ]
+}

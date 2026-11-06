@@ -1,0 +1,313 @@
+{
+  "synthetic": true,
+  "mode": "CPU retrieval + scripted offline generation; no LLM capability claim",
+  "real_llm_calls": 0,
+  "new_pdfs": 2,
+  "physical_pages": 4,
+  "indexed_chunks": 4,
+  "embedding_dimension": 384,
+  "device": "cpu",
+  "model_load_and_hash_check_seconds": 10.328917400009232,
+  "dataset_manifest": {
+    "state": "complete",
+    "files": [
+      {
+        "name": "readiness_arabic.pdf",
+        "sha256": "c70b0406e3c76c4ae9f066ed113921ab5c66da123e1e55a4d1d74ce218319de9"
+      },
+      {
+        "name": "readiness_english.pdf",
+        "sha256": "cfd2ca0e611134b29e000bf8cf72d4f235e2cea1e7b0b89da82e0d571c030271"
+      }
+    ],
+    "pages": 4,
+    "chunks": 4,
+    "model_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "chunk_max_tokens": 240,
+    "chunk_overlap": 32,
+    "collection": "preparation",
+    "chunks_sha256": "8ff63ae3d8745285fc20fe18db1dad2d20c998609f6bd2adf5788b2bed67c961",
+    "extraction_ms": 22.960000002058223,
+    "embedding_and_index_ms": 335.54369999910705,
+    "isolation": "Independent Qdrant Local directory; same collection name in different stores does not share data."
+  },
+  "cases": [
+    {
+      "id": "ar1",
+      "request": {
+        "question": "كم تستمر ورشة الروبوتات؟",
+        "language": "ar"
+      },
+      "response": {
+        "contract_version": "1.0.0",
+        "answer": "تستمر ورشة الروبوتات تسعة أيام [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "e7ca7581-bf93-56a6-bf09-a101804517cb",
+            "document_id": "readiness_arabic",
+            "document_name": "readiness_arabic.pdf",
+            "page_number": 1,
+            "supporting_excerpt": "تستمر ورشة الروبوتات تسعة أيام",
+            "version": "unspecified"
+          }
+        ],
+        "claims": [
+          {
+            "text": "تستمر ورشة الروبوتات تسعة أيام",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "status": "answered",
+        "reason": "supported",
+        "language": "ar",
+        "mode": "mock",
+        "latency": {
+          "retrieval_ms": 22.30799999961164,
+          "generation_ms": 0.049000009312294424,
+          "validation_ms": 0.17010001465678215,
+          "total_ms": 22.609000006923452
+        },
+        "validation": {
+          "citation_references": "verified",
+          "support_check": "exact_quote",
+          "semantic_faithfulness": "not_evaluated"
+        }
+      },
+      "retrieved": [
+        {
+          "chunk_id": "e7ca7581-bf93-56a6-bf09-a101804517cb",
+          "file": "readiness_arabic.pdf",
+          "page": 1,
+          "score": 0.8328284519972855
+        },
+        {
+          "chunk_id": "1cd98c24-3c0a-5c89-84a3-cb879dfb16ce",
+          "file": "readiness_arabic.pdf",
+          "page": 2,
+          "score": 0.7860397887708501
+        },
+        {
+          "chunk_id": "d0728cb9-b641-5ad2-914e-718a09aef33c",
+          "file": "readiness_english.pdf",
+          "page": 1,
+          "score": 0.7649932317110439
+        }
+      ],
+      "source_quote_verified_against_pdf_extraction": true
+    },
+    {
+      "id": "ar2",
+      "request": {
+        "question": "متى تبدأ جولة المتحف يوم الجمعة؟",
+        "language": "ar"
+      },
+      "response": {
+        "contract_version": "1.0.0",
+        "answer": "تبدأ جولة المتحف يوم الجمعة الساعة الرابعة عصراً [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "1cd98c24-3c0a-5c89-84a3-cb879dfb16ce",
+            "document_id": "readiness_arabic",
+            "document_name": "readiness_arabic.pdf",
+            "page_number": 2,
+            "supporting_excerpt": "تبدأ جولة المتحف يوم الجمعة الساعة الرابعة عصراً",
+            "version": "unspecified"
+          }
+        ],
+        "claims": [
+          {
+            "text": "تبدأ جولة المتحف يوم الجمعة الساعة الرابعة عصراً",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "status": "answered",
+        "reason": "supported",
+        "language": "ar",
+        "mode": "mock",
+        "latency": {
+          "retrieval_ms": 25.267400007578544,
+          "generation_ms": 0.03610001294873655,
+          "validation_ms": 0.08470001921523362,
+          "total_ms": 25.4341999971075
+        },
+        "validation": {
+          "citation_references": "verified",
+          "support_check": "exact_quote",
+          "semantic_faithfulness": "not_evaluated"
+        }
+      },
+      "retrieved": [
+        {
+          "chunk_id": "1cd98c24-3c0a-5c89-84a3-cb879dfb16ce",
+          "file": "readiness_arabic.pdf",
+          "page": 2,
+          "score": 0.8427367625645191
+        },
+        {
+          "chunk_id": "e7ca7581-bf93-56a6-bf09-a101804517cb",
+          "file": "readiness_arabic.pdf",
+          "page": 1,
+          "score": 0.7398023320570344
+        },
+        {
+          "chunk_id": "d0728cb9-b641-5ad2-914e-718a09aef33c",
+          "file": "readiness_english.pdf",
+          "page": 1,
+          "score": 0.7070316855781658
+        }
+      ],
+      "source_quote_verified_against_pdf_extraction": true
+    },
+    {
+      "id": "en1",
+      "request": {
+        "question": "How long is an observatory telescope reservation?",
+        "language": "en"
+      },
+      "response": {
+        "contract_version": "1.0.0",
+        "answer": "The observatory telescope reservation lasts forty minutes. [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "d0728cb9-b641-5ad2-914e-718a09aef33c",
+            "document_id": "readiness_english",
+            "document_name": "readiness_english.pdf",
+            "page_number": 1,
+            "supporting_excerpt": "The observatory telescope reservation lasts forty minutes.",
+            "version": "unspecified"
+          }
+        ],
+        "claims": [
+          {
+            "text": "The observatory telescope reservation lasts forty minutes.",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "status": "answered",
+        "reason": "supported",
+        "language": "en",
+        "mode": "mock",
+        "latency": {
+          "retrieval_ms": 28.323300008196384,
+          "generation_ms": 0.03239999932702631,
+          "validation_ms": 0.0754999928176403,
+          "total_ms": 28.47410000686068
+        },
+        "validation": {
+          "citation_references": "verified",
+          "support_check": "exact_quote",
+          "semantic_faithfulness": "not_evaluated"
+        }
+      },
+      "retrieved": [
+        {
+          "chunk_id": "d0728cb9-b641-5ad2-914e-718a09aef33c",
+          "file": "readiness_english.pdf",
+          "page": 1,
+          "score": 0.8637155226770239
+        },
+        {
+          "chunk_id": "e7ca7581-bf93-56a6-bf09-a101804517cb",
+          "file": "readiness_arabic.pdf",
+          "page": 1,
+          "score": 0.7493040440046566
+        },
+        {
+          "chunk_id": "43ec7df5-d4a8-5c2b-b971-65acc55ebe44",
+          "file": "readiness_english.pdf",
+          "page": 2,
+          "score": 0.7477602895896927
+        }
+      ],
+      "source_quote_verified_against_pdf_extraction": true
+    },
+    {
+      "id": "en2",
+      "request": {
+        "question": "Where can I reserve the rehearsal room?",
+        "language": "en"
+      },
+      "response": {
+        "contract_version": "1.0.0",
+        "answer": "Reserve the rehearsal room at desk Delta. [S1]",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "43ec7df5-d4a8-5c2b-b971-65acc55ebe44",
+            "document_id": "readiness_english",
+            "document_name": "readiness_english.pdf",
+            "page_number": 2,
+            "supporting_excerpt": "Reserve the rehearsal room at desk Delta.",
+            "version": "unspecified"
+          }
+        ],
+        "claims": [
+          {
+            "text": "Reserve the rehearsal room at desk Delta.",
+            "source_ids": [
+              "S1"
+            ]
+          }
+        ],
+        "status": "answered",
+        "reason": "supported",
+        "language": "en",
+        "mode": "mock",
+        "latency": {
+          "retrieval_ms": 25.169099986669607,
+          "generation_ms": 0.03440000000409782,
+          "validation_ms": 0.07490000280085951,
+          "total_ms": 25.322500005131587
+        },
+        "validation": {
+          "citation_references": "verified",
+          "support_check": "exact_quote",
+          "semantic_faithfulness": "not_evaluated"
+        }
+      },
+      "retrieved": [
+        {
+          "chunk_id": "43ec7df5-d4a8-5c2b-b971-65acc55ebe44",
+          "file": "readiness_english.pdf",
+          "page": 2,
+          "score": 0.8427411171047905
+        },
+        {
+          "chunk_id": "d0728cb9-b641-5ad2-914e-718a09aef33c",
+          "file": "readiness_english.pdf",
+          "page": 1,
+          "score": 0.8046219353181568
+        },
+        {
+          "chunk_id": "1cd98c24-3c0a-5c89-84a3-cb879dfb16ce",
+          "file": "readiness_arabic.pdf",
+          "page": 2,
+          "score": 0.773462440629194
+        }
+      ],
+      "source_quote_verified_against_pdf_extraction": true
+    }
+  ],
+  "correct_top1_retrieval_cases": 4,
+  "correct_document_page_citations": 4,
+  "separate_store_chunks": 2,
+  "fresh_store_has_only_explicit_inputs": true,
+  "previous_synthetic_manifest_unchanged": true,
+  "memory": {
+    "initial_rss_bytes": 66154496,
+    "sampled_peak_rss_bytes": 793550848,
+    "minimum_system_available_bytes": 6673145856,
+    "samples": 151,
+    "sampling_interval_seconds": 0.05,
+    "limitation": "Sampled RSS can miss peaks between samples; not GPU memory."
+  }
+}

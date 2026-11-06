@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "version": "synthetic-v1",
+  "notice": "Invented preparation fixtures. Not Bethlehem University policy, challenge data, or business evidence.",
+  "pages": [
+    {
+      "document_id": "training",
+      "source": "synthetic_training.json",
+      "page": 1,
+      "text": "تستغرق ورشة أساسيات بايثون ساعتين ولا تتطلب خبرة سابقة. The Python fundamentals workshop lasts two hours and requires no previous programming experience."
+    },
+    {
+      "document_id": "training",
+      "source": "synthetic_training.json",
+      "page": 2,
+      "text": "يُغلق التسجيل في ورشة الروبوتات يوم الثلاثاء الساعة الثانية ظهراً. Robotics workshop registration closes on Tuesday at 14:00."
+    }
+  ]
+}

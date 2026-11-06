@@ -1,0 +1,141 @@
+{
+  "answered_ar": {
+    "contract_version": "1.0.0",
+    "answer": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. [S1]",
+    "sources": [
+      {
+        "source_id": "S1",
+        "chunk_id": "7f84f2c0-c8b7-5118-9842-a76d4c8fe77d",
+        "document_id": "library",
+        "document_name": "synthetic_library.json",
+        "page_number": 1,
+        "supporting_excerpt": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً.",
+        "version": "synthetic-v1"
+      }
+    ],
+    "claims": [
+      {
+        "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "status": "answered",
+    "reason": "supported",
+    "language": "ar",
+    "mode": "mock",
+    "latency": {
+      "retrieval_ms": 55.817299988120794,
+      "generation_ms": 0.09560000034980476,
+      "validation_ms": 0.2272999845445156,
+      "total_ms": 56.17500000516884
+    },
+    "validation": {
+      "citation_references": "verified",
+      "support_check": "exact_quote",
+      "semantic_faithfulness": "not_evaluated"
+    }
+  },
+  "answered_en": {
+    "contract_version": "1.0.0",
+    "answer": "The library opens on Saturday from 09:00 to 17:00. [S1]",
+    "sources": [
+      {
+        "source_id": "S1",
+        "chunk_id": "c2e9f680-7144-55a9-a71a-02e91846ece8",
+        "document_id": "library",
+        "document_name": "synthetic_library.json",
+        "page_number": 2,
+        "supporting_excerpt": "The library opens on Saturday from 09:00 to 17:00.",
+        "version": "synthetic-v1"
+      }
+    ],
+    "claims": [
+      {
+        "text": "The library opens on Saturday from 09:00 to 17:00.",
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ],
+    "status": "answered",
+    "reason": "supported",
+    "language": "en",
+    "mode": "mock",
+    "latency": {
+      "retrieval_ms": 47.350499997264706,
+      "generation_ms": 0.08019999950192869,
+      "validation_ms": 0.17340001068077981,
+      "total_ms": 47.629299995605834
+    },
+    "validation": {
+      "citation_references": "verified",
+      "support_check": "exact_quote",
+      "semantic_faithfulness": "not_evaluated"
+    }
+  },
+  "out_of_scope_ar": {
+    "contract_version": "1.0.0",
+    "answer": "لا أستطيع الإجابة عن هذا السؤال من الأدلة المتاحة.",
+    "sources": [],
+    "claims": [],
+    "status": "insufficient_evidence",
+    "reason": "out_of_scope",
+    "language": "ar",
+    "mode": "mock",
+    "latency": {
+      "retrieval_ms": 44.982199993683025,
+      "generation_ms": 0.03569999535102397,
+      "validation_ms": 0.06549998943228275,
+      "total_ms": 45.09909999615047
+    },
+    "validation": {
+      "citation_references": "not_applicable",
+      "support_check": "not_applicable",
+      "semantic_faithfulness": "not_evaluated"
+    }
+  },
+  "ambiguous_ar": {
+    "contract_version": "1.0.0",
+    "answer": "يرجى توضيح المستند أو السياسة أو الموضوع المقصود.",
+    "sources": [],
+    "claims": [],
+    "status": "insufficient_evidence",
+    "reason": "ambiguous",
+    "language": "ar",
+    "mode": "mock",
+    "latency": {
+      "retrieval_ms": 46.22840000956785,
+      "generation_ms": 0.03819999983534217,
+      "validation_ms": 0.07840000034775585,
+      "total_ms": 46.361499989870936
+    },
+    "validation": {
+      "citation_references": "not_applicable",
+      "support_check": "not_applicable",
+      "semantic_faithfulness": "not_evaluated"
+    }
+  },
+  "invalid_citation_error": {
+    "contract_version": "1.0.0",
+    "answer": "The request could not be completed safely. Please try again later.",
+    "sources": [],
+    "claims": [],
+    "status": "error",
+    "reason": "invalid_citation",
+    "language": "en",
+    "mode": "mock",
+    "latency": {
+      "retrieval_ms": 0.008999995770864189,
+      "generation_ms": 0.006799993570894003,
+      "validation_ms": 0.10550000297371298,
+      "total_ms": 0.1399000029778108
+    },
+    "validation": {
+      "citation_references": "not_applicable",
+      "support_check": "not_applicable",
+      "semantic_faithfulness": "not_evaluated"
+    }
+  }
+}

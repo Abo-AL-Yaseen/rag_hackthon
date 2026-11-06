@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "version": "2024",
+  "pages": [
+    {
+      "document_id": "retired_desk",
+      "source": "synthetic_retired_desk.json",
+      "page": 1,
+      "text": "The retired emergency contact desk was in room 99. This record describes only the retired desk."
+    }
+  ]
+}

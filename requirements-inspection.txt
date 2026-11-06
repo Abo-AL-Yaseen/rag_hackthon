@@ -1,0 +1,2 @@
+# Minimal PDF inspection environment only; this is not the RAG application stack.
+PyMuPDF==1.26.6

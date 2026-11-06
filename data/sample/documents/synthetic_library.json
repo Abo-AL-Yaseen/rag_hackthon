@@ -1,0 +1,25 @@
+{
+  "synthetic": true,
+  "version": "synthetic-v1",
+  "notice": "Invented preparation fixtures. Not Bethlehem University policy, challenge data, or business evidence.",
+  "pages": [
+    {
+      "document_id": "library",
+      "source": "synthetic_library.json",
+      "page": 1,
+      "text": "تتيح مكتبة مختبر المثال استعارة ثلاثة كتب لمدة اثني عشر يوماً. Library borrowing: a member may borrow three books for twelve days."
+    },
+    {
+      "document_id": "library",
+      "source": "synthetic_library.json",
+      "page": 2,
+      "text": "تفتح المكتبة يوم السبت من الساعة التاسعة صباحاً حتى الخامسة مساءً. The library opens on Saturday from 09:00 to 17:00."
+    },
+    {
+      "document_id": "library",
+      "source": "synthetic_library.json",
+      "page": 3,
+      "text": "تجديد الكتب يتم عبر بوابة المكتبة قبل موعد الإرجاع. يمكن التجديد مرة واحدة فقط. Book renewal is requested in the library portal before the due date and is allowed once."
+    }
+  ]
+}

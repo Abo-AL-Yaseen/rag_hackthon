@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "version": "2025",
+  "pages": [
+    {
+      "document_id": "badge_policy",
+      "source": "synthetic_badge_old.json",
+      "page": 1,
+      "text": "A visitor badge is valid for two days. This synthetic version has no priority over other versions."
+    }
+  ]
+}

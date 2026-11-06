@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "version": "synthetic-v1",
+  "notice": "Invented preparation fixtures. Not Bethlehem University policy, challenge data, or business evidence.",
+  "pages": [
+    {
+      "document_id": "transport",
+      "source": "synthetic_transport.json",
+      "page": 1,
+      "text": "تنطلق حافلة مختبر المثال من البوابة الشمالية الساعة الثامنة صباحاً. The Example Lab shuttle departs from the north gate at 08:00."
+    },
+    {
+      "document_id": "transport",
+      "source": "synthetic_transport.json",
+      "page": 2,
+      "text": "يُسلّم المفقود من الحافلة إلى مكتب النقل في الغرفة 24. Shuttle lost property is delivered to the transport office in room 24."
+    }
+  ]
+}
