@@ -1,0 +1,58 @@
+/** RAG response contract v1.0.0 — mirrors docs/rag_response.schema.json */
+
+export type Language = 'ar' | 'en'
+export type AnswerStatus = 'answered' | 'insufficient_evidence' | 'error'
+export type Mode = 'mock' | 'remote'
+
+export interface Source {
+  source_id: string
+  chunk_id: string
+  document_id: string
+  document_name: string
+  page_number: number
+  supporting_excerpt: string
+  version: string
+}
+
+export interface AnswerClaim {
+  text: string
+  source_ids: string[]
+}
+
+export interface Latency {
+  retrieval_ms: number
+  generation_ms: number
+  validation_ms: number
+  total_ms: number
+}
+
+export interface ValidationInfo {
+  citation_references: 'verified' | 'not_applicable'
+  support_check: 'exact_quote' | 'not_applicable'
+  semantic_faithfulness: 'not_evaluated'
+}
+
+export interface RAGResponse {
+  contract_version: '1.0.0'
+  answer: string
+  sources: Source[]
+  claims: AnswerClaim[]
+  status: AnswerStatus
+  reason: string
+  language: Language
+  mode: Mode
+  latency: Latency
+  validation: ValidationInfo
+}
+
+/** Backend request shape from the integration contract. */
+export interface RAGRequest {
+  question: string
+  language: Language
+}
+
+export type MockScenario =
+  | 'answered_ar'
+  | 'answered_en'
+  | 'insufficient_evidence'
+  | 'error'

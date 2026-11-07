@@ -1,0 +1,6 @@
+{
+  "catalog_version": "1.0.0",
+  "verified": true,
+  "programs": [],
+  "notes": "Verified program/plan catalog is intentionally empty until organizer-approved study-plan document IDs are supplied. Do not invent programs, plans, or course mappings. Each entry must map program_id + plan_version to document_ids present in the authorized RAG index."
+}

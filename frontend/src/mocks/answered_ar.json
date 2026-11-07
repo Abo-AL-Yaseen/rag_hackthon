@@ -1,0 +1,36 @@
+{
+  "contract_version": "1.0.0",
+  "answer": "تستمر ورشة الروبوتات تسعة أيام [S1]",
+  "sources": [
+    {
+      "source_id": "S1",
+      "chunk_id": "e7ca7581-bf93-56a6-bf09-a101804517cb",
+      "document_id": "readiness_arabic",
+      "document_name": "readiness_arabic.pdf",
+      "page_number": 1,
+      "supporting_excerpt": "تستمر ورشة الروبوتات تسعة أيام",
+      "version": "unspecified"
+    }
+  ],
+  "claims": [
+    {
+      "text": "تستمر ورشة الروبوتات تسعة أيام",
+      "source_ids": ["S1"]
+    }
+  ],
+  "status": "answered",
+  "reason": "supported",
+  "language": "ar",
+  "mode": "mock",
+  "latency": {
+    "retrieval_ms": 22.308,
+    "generation_ms": 0.049,
+    "validation_ms": 0.17,
+    "total_ms": 22.609
+  },
+  "validation": {
+    "citation_references": "verified",
+    "support_check": "exact_quote",
+    "semantic_faithfulness": "not_evaluated"
+  }
+}

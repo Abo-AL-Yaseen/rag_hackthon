@@ -24,6 +24,11 @@ models/
 logs/
 tmp/
 *.log
+# Frontend local install/build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
 # Editor/OS files
 .vscode/
 .idea/
@@ -64,6 +69,7 @@ Thumbs.db
 !/docs/presentation_outline.md
 !/docs/submission_checklist.md
 !/docs/judging_rehearsal.md
+!/docs/backend.md
 !/docs/evidence/
 /docs/evidence/*
 !/docs/evidence/model_manifest.json

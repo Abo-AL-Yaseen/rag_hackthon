@@ -1,0 +1,36 @@
+{
+  "contract_version": "1.0.0",
+  "answer": "The observatory telescope reservation lasts forty minutes. [S1]",
+  "sources": [
+    {
+      "source_id": "S1",
+      "chunk_id": "d0728cb9-b641-5ad2-914e-718a09aef33c",
+      "document_id": "readiness_english",
+      "document_name": "readiness_english.pdf",
+      "page_number": 1,
+      "supporting_excerpt": "The observatory telescope reservation lasts forty minutes.",
+      "version": "unspecified"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The observatory telescope reservation lasts forty minutes.",
+      "source_ids": ["S1"]
+    }
+  ],
+  "status": "answered",
+  "reason": "supported",
+  "language": "en",
+  "mode": "mock",
+  "latency": {
+    "retrieval_ms": 28.323,
+    "generation_ms": 0.032,
+    "validation_ms": 0.075,
+    "total_ms": 28.474
+  },
+  "validation": {
+    "citation_references": "verified",
+    "support_check": "exact_quote",
+    "semantic_faithfulness": "not_evaluated"
+  }
+}
