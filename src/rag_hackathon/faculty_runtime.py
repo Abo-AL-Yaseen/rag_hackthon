@@ -15,6 +15,7 @@ from .generation.contracts import Latency, RAGResponse, ValidationInfo
 from .generation.providers import DeterministicMockProvider
 from .retrieval.scoped import ScopedIndex
 from .service import RAGService, RAGPolicy, REFUSALS
+from .academic_decisions import intent, program_mentions, MESSAGES
 
 
 @dataclass
@@ -125,17 +126,37 @@ class FacultyRuntime:
             # The engine rejects invalid input before touching the retriever.
             return self.service.ask(question, language=language)
         if (program_id is None) != (plan_version is None):
-            return self._refusal('ambiguous', language, start)
+            return self._decision('ambiguous', 'scope', language, start)
         key = (program_id, plan_version)
         if program_id is not None and (not isinstance(program_id, str) or not isinstance(plan_version, str)):
             return self._refusal('ambiguous', language, start)
         if program_id is not None and key not in self._views:
             return self._refusal('outdated_sources', language, start)
         mentioned = _mentioned_plan_versions(question)
+        named = program_mentions(question, self.programs())
+        if len(named)>1 or len(mentioned)>1 or (program_id is not None and named and named!={program_id}):
+            return self._decision('ambiguous', 'conflict', language, start)
         if program_id is not None and mentioned and mentioned != {plan_version}:
             # Do not silently answer a textual request for another plan using
             # the selected context, even when the same course code exists.
-            return self._refusal('ambiguous', language, start)
+            return self._decision('ambiguous', 'conflict', language, start)
+        if program_id is None and named and len(mentioned)==1:
+            candidate=(next(iter(named)), next(iter(mentioned)))
+            if candidate not in self._views:
+                return self._decision('ambiguous', 'scope', language, start)
+            program_id,plan_version=candidate
+            key=candidate
+        need=intent(question)
+        if need=='out_of_scope':
+            return self._decision('out_of_scope', need, language, start)
+        if need=='schedule':
+            return self._decision('missing_evidence', need, language, start)
+        if need in ('course','graduation') and program_id is None:
+            return self._decision('ambiguous', 'scope', language, start)
+        if need=='warning' and program_id is None:
+            return self._decision('ambiguous', 'warning', language, start)
+        if need=='load':
+            return self._decision('ambiguous', 'load', language, start)
         selection = _Selection(self._views[key] if program_id is not None else self._general)
         token = self._selection.set(selection)
         try:
@@ -146,6 +167,8 @@ class FacultyRuntime:
                     result.answer = 'المتطلبات السابقة غير واضحة أو غير مذكورة في الخطة المنشورة. يرجى مراجعة القسم قبل التسجيل.'
                 else:
                     result.answer = 'Prerequisites are unclear or not listed in the published plan. Please check with the department before registration.'
+            elif result.status=='insufficient_evidence' and result.reason=='missing_evidence' and need=='course':
+                result.answer=MESSAGES['missing'][language]
             result.latency.total_ms = (time.perf_counter()-start)*1000
             return result
         finally:
@@ -161,6 +184,11 @@ class FacultyRuntime:
             latency=Latency(retrieval_ms=0, generation_ms=0, validation_ms=0,
                             total_ms=(time.perf_counter()-start)*1000),
             validation=ValidationInfo(citation_references='not_applicable', support_check='not_applicable'))
+
+    def _decision(self, reason, message, language, start):
+        response=self._refusal(reason, language, start)
+        response.answer=MESSAGES[message][language]
+        return response
 
     def close(self):
         self._index.close()

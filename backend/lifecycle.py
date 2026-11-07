@@ -9,7 +9,7 @@ from typing import Any
 from backend.catalog import ProgramCatalog
 from backend.config import BackendSettings
 from rag_hackathon.faculty_runtime import FacultyRuntime
-from rag_hackathon.generation.providers import DeterministicMockProvider
+from rag_hackathon.generation.academic_extractive import LocalAcademicEvidenceProvider
 logger = logging.getLogger("backend")
 
 @dataclass
@@ -65,7 +65,9 @@ def build_state(settings: BackendSettings | None = None) -> AppState:
         return state
     try:
         # Never load private .env or attach a consumed live grant here.
-        state.provider = DeterministicMockProvider(_load_mock_rules(settings.mock_rules_path))
+        # Real retrieved evidence decisions, without exact-question fixture lookup.
+        # This remains a non-LLM local mode; never attach remote credentials/grants.
+        state.provider = LocalAcademicEvidenceProvider()
         state.provider_mode = 'mock'
         if settings.index_path is None:
             state.index_detail = 'RAG_INDEX_PATH not set'
@@ -74,7 +76,7 @@ def build_state(settings: BackendSettings | None = None) -> AppState:
         state.service = state.runtime.service
         state.index_open = True
         state.index_detail = 'open (scoped FacultyRuntime)'
-        logger.info('Faculty runtime ready; one local owner, mock generation only')
+        logger.info('Faculty runtime ready; one local owner, non-scripted local excerpts, no LLM')
     except Exception as exc:
         detail = f'runtime_init_failed:{type(exc).__name__}'
         state.startup_errors.append(detail)

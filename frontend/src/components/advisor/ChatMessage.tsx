@@ -43,8 +43,8 @@ export function ChatMessage({ message }: { message: ChatMessageType }) {
       {message.phase === 'error' && <div className="advisor-response-state" role="alert">تعذر إكمال الطلب — يمكنك إعادة الإرسال.</div>}
       {response && <>
         <div className="advisor-response-state" role={response.status === 'error' ? 'alert' : 'status'}>
-          {response.mode === 'mock' ? 'محاكاة محلية — ليست إجابة LLM حية' : 'توليد LLM عن بُعد'}
-          {' · '}{response.status === 'answered' ? 'إجابة مدعومة' : response.status === 'insufficient_evidence' ? 'الأدلة غير كافية' : 'خطأ في المحرك'}
+          {response.mode === 'mock' ? 'وضع محلي دون LLM — اقتباسات من الأدلة' : 'توليد LLM عن بُعد'}
+          {' · '}{response.status === 'answered' ? 'إجابة مدعومة' : response.status === 'insufficient_evidence' ? response.reason === 'ambiguous' ? 'بحاجة لتوضيح' : response.reason === 'out_of_scope' ? 'خارج نطاق المرشد' : 'الأدلة غير كافية' : 'خطأ في المحرك'}
           {' · '}<bdi>{response.reason}</bdi>
         </div>
         {!!sources.length && <section className="advisor-sources" aria-label="مصادر الإجابة">

@@ -6,9 +6,7 @@ if ($Component -eq 'backend') {
     $env:PYTHONPATH = "$projectRoot\src;$projectRoot"
     $env:PYTHONIOENCODING = 'utf-8'
     $env:RAG_INDEX_PATH = Join-Path $projectRoot 'data\index\engineering_faculty_20261107_v1'
-    $env:MOCK_RULES_PATH = Join-Path $projectRoot '.local\integration_execution_20261107\mock_cases.json'
-    & (Join-Path $projectRoot '.venv\Scripts\python.exe') (Join-Path $PSScriptRoot 'prepare_manual_mock_cases.py') --index $env:RAG_INDEX_PATH --output $env:MOCK_RULES_PATH
-    if ($LASTEXITCODE -ne 0) { throw 'Offline mock evidence preparation failed' }
+    $env:MOCK_RULES_PATH = '' # Non-scripted local evidence selection; no question fixtures.
     $env:LLM_PROVIDER = 'mock'
     $env:ALLOW_FREE_API_CALLS = 'false'
     $env:ALLOW_PAID_API_CALLS = 'false'
