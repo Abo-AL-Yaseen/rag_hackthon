@@ -1,4 +1,8 @@
-"""Per-request document allowlist wrapper around the engine Retriever protocol.
+"""Legacy synthetic-fixture adapter; NOT used by the faculty application.
+
+Production lifespan/routes use FacultyRuntime and Qdrant pre-ranking scope
+filters. This older post-filter implementation remains only for compatibility
+with the teammate's isolated adapter tests; never attach it to the mixed index.
 
 RAGService.ask() does not accept program_id/plan_version. DenseRetriever.search()
 has no Qdrant metadata filter API. Backend therefore scopes retrieval by wrapping

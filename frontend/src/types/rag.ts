@@ -49,6 +49,30 @@ export interface RAGResponse {
 export interface RAGRequest {
   question: string
   language: Language
+  program_id?: string | null
+  plan_version?: string | null
+}
+
+export interface ProgramSummary {
+  program_id: string
+  name: string
+  name_ar?: string | null
+  name_en?: string | null
+  plan_versions: string[]
+  language?: string | null
+}
+
+export interface SourceLocator {
+  document_id: string
+  source_url: string
+  document_title: string
+  physical_pdf_page: number | null
+  engine_page_number: number
+  table_index: number | null
+  row_index: number | null
+  article: string | null
+  program_id: string | null
+  plan_version: string | null
 }
 
 export type MockScenario =

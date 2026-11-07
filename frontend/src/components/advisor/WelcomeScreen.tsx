@@ -21,8 +21,8 @@ export function WelcomeScreen({ suggestions, onSelectSuggestion }: Props) {
             المرشد الأكاديمي <span className="advisor-welcome__title-accent">الذكي</span>
           </h2>
           <p className="advisor-welcome__desc">
-            اسأل عن التخصصات، الخطط الدراسية، المساقات، الأنظمة الجامعية، وأي استفسار أكاديمي آخر،
-            وستحصل على إجابة واضحة وموثوقة.
+            اسأل عن خطط كلية الهندسة ومساقاتها والأنظمة الجامعية المتاحة.
+            اختر تخصصك ونسخة خطتك أولاً؛ عند غياب الدليل سنوضح ذلك.
           </p>
         </div>
       </div>

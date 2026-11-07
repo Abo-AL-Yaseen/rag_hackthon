@@ -12,6 +12,7 @@ type Props = {
   onDraftChange: (value: string) => void
   onSend: (value: string) => void
   onSelectSuggestion: (text: string) => void
+  disabled?: boolean
 }
 
 function WaveDecoration() {
@@ -41,6 +42,7 @@ export function ChatWindow({
   onDraftChange,
   onSend,
   onSelectSuggestion,
+  disabled = false,
 }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const showWelcome = messages.length === 0
@@ -66,7 +68,8 @@ export function ChatWindow({
         )}
       </div>
       <div className="advisor-chat__composer-wrap">
-        <MessageComposer value={draft} onChange={onDraftChange} onSend={onSend} />
+        <MessageComposer value={draft} onChange={onDraftChange} onSend={onSend}
+          disabled={disabled || messages.some((m) => m.phase === 'pending')} />
       </div>
     </section>
   )

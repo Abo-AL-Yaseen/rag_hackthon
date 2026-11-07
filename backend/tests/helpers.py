@@ -10,6 +10,7 @@ from backend.catalog import load_catalog
 from backend.config import BackendSettings
 from backend.lifecycle import AppState
 from rag_hackathon.schema import Chunk, Hit
+from backend.filtering import ask_with_document_filter
 
 
 class FakeRetriever:
@@ -55,9 +56,19 @@ def make_test_client(catalog_path: Path, service=None, *, index_open: bool = Tru
         llm_provider="mock",
     )
     catalog = load_catalog(catalog_path)
+    # Synthetic transport fixtures only. Production owns a real FacultyRuntime.
+    class FixtureRuntime:
+        def __init__(self): self.service = service
+        def programs(self):
+            return [{'program_id':p.program_id,'plan_version':p.plan_version,'name_ar':p.name,'name_en':p.name} for p in catalog.plans]
+        def ask(self, question, *, language, program_id, plan_version):
+            plan = catalog.resolve(program_id, plan_version) if program_id is not None else None
+            return ask_with_document_filter(service, question, language, plan.document_ids if plan else None)
+        def close(self): pass
     state = AppState(
         settings=settings,
         catalog=catalog,
+        runtime=FixtureRuntime() if service else None,
         service=service,
         provider=getattr(service, "provider", None) if service else None,
         index_open=bool(service) and index_open,

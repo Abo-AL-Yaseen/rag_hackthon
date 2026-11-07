@@ -22,6 +22,8 @@ class ProgramSummary(BaseModel):
 
     program_id: str
     name: str
+    name_ar: str | None = None
+    name_en: str | None = None
     plan_versions: list[str]
     language: str | None = None
 

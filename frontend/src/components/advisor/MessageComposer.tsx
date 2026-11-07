@@ -65,7 +65,7 @@ export function MessageComposer({ value, onChange, onSend, disabled = false }: P
         onKeyDown={handleKeyDown}
         placeholder="اكتب سؤالك هنا..."
         rows={1}
-        maxLength={4000}
+        maxLength={2000}
         aria-label="نص السؤال"
       />
 

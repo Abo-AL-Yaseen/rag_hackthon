@@ -777,3 +777,19 @@
     scroll-behavior: auto;
   }
 }
+
+/* Integrated context and evidence UI, retaining the existing Arabic palette. */
+.advisor-context { background: #fff; padding: 12px 24px; border-bottom: 1px solid #e1e5f0; direction: rtl; }
+.advisor-context__fields { display: flex; flex-wrap: wrap; gap: 12px; }
+.advisor-context label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #303c68; }
+.advisor-context select { min-height: 38px; max-width: 360px; border: 1px solid #c8cfe5; border-radius: 8px; padding: 4px 10px; background: #fafaff; color: #202948; }
+.advisor-context p { font-size: 12px; margin: 7px 0 0; }
+.advisor-mode-note { color: #6b440b; background: #fff5d8; border-radius: 6px; padding: 5px 8px; }
+.advisor-catalog-ready { font-size: 12px; color: #266447; }
+.advisor-response-state { font-size: 11px; margin-top: 10px; padding-top: 7px; border-top: 1px solid #d5d9e8; color: #63507d; }
+.advisor-message__bubble { white-space: pre-wrap; overflow-wrap: anywhere; }
+.advisor-sources { margin-top: 12px; white-space: normal; }
+.advisor-source-card { margin: 8px 0; padding: 12px; border: 1px solid #cdd6ed; border-radius: 10px; background: #f8faff; font-size: 12px; scroll-margin-top: 20px; }
+.advisor-source-card blockquote { margin: 8px 0; padding-inline-start: 8px; border-inline-start: 3px solid #7547ed; white-space: pre-wrap; }
+.advisor-source-card a, .advisor-citation { color: #5530ba; text-decoration: underline; }
+@media (max-width: 700px) { .advisor-context { padding: 10px 12px; } .advisor-context__fields { gap: 7px; } .advisor-context select { max-width: 100%; width: 100%; } .advisor-context label { flex: 1 1 140px; } }

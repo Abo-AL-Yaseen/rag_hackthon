@@ -3,7 +3,7 @@ export const siteMeta = {
   universityName: 'جامعة النجاح الوطنية',
   tagline: 'دليلك الذكي في جامعة النجاح الوطنية',
   description:
-    'مساعد يعتمد على الذكاء الاصطناعي للإجابة عن كل ما يتعلق بالتخصصات، الخطط الدراسية، المساقات، والمتطلبات.',
+    'مساعد يعتمد على الذكاء الاصطناعي للإجابة من أدلة خطط كلية الهندسة والأنظمة الجامعية المتاحة.',
   disclaimer:
     'المنصة مشروع مساعد أكاديمي، ولا تُغني إجاباته عن الرجوع إلى الإعلانات والتعليمات الرسمية للجامعة.',
   officialSite: 'https://www.najah.edu/ar/',
@@ -20,17 +20,17 @@ export const navLinks = [
 export const searchSuggestions = [
   {
     id: 'marketing',
-    label: 'ما هي متطلبات تخصص التسويق؟',
+    label: 'ما عدد الساعات المعتمدة للمساق 10871112؟',
     icon: 'graduation' as const,
   },
   {
     id: 'prereq',
-    label: 'ما المتطلب السابق لمساق BUS230؟',
+    label: 'شو المتطلبات السابقة لمساق 10641373؟',
     icon: 'book' as const,
   },
   {
     id: 'cs-hours',
-    label: 'كم ساعة تخصص علوم الحاسوب؟',
+    label: 'كم مجموع ساعات التخرج حسب هذه الخطة تحديداً؟',
     icon: 'clock' as const,
   },
 ]
@@ -52,7 +52,7 @@ export const featureStrip = [
   },
   {
     id: 'coverage',
-    title: 'يغطي جميع تخصصات الجامعة',
+    title: 'يغطي 15 تخصصاً في كلية الهندسة',
     description: 'دعم واسع للتخصصات والمساقات والمتطلبات السابقة.',
     icon: 'target' as const,
     tone: 'teal' as const,

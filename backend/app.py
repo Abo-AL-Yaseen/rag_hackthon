@@ -6,10 +6,11 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.concurrency import run_in_threadpool
 
 from backend.config import BackendSettings
 from backend.lifecycle import AppState, build_state, shutdown_state
-from backend.routes import chat, health, programs
+from backend.routes import chat, health, programs, sources
 
 logger = logging.getLogger("backend")
 
@@ -28,14 +29,14 @@ def create_app(settings: BackendSettings | None = None, *, state: AppState | Non
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        app_state = state if state is not None else build_state(settings)
+        app_state = state if state is not None else await run_in_threadpool(build_state, settings)
         app.state.backend = app_state
         if app_state.startup_errors:
             logger.warning("Backend started degraded: %s", ",".join(app_state.startup_errors))
         try:
             yield
         finally:
-            shutdown_state(app_state)
+            await run_in_threadpool(shutdown_state, app_state)
 
     app = FastAPI(
         title="IEEE RAG Hackathon Backend",
@@ -52,6 +53,7 @@ def create_app(settings: BackendSettings | None = None, *, state: AppState | Non
     app.include_router(health.router)
     app.include_router(programs.router)
     app.include_router(chat.router)
+    app.include_router(sources.router)
     return app
 
 

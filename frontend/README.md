@@ -1,36 +1,16 @@
-# المرشد الأكاديمي الذكي — Frontend
+# المرشد الأكاديمي — واجهة الهندسة المتكاملة
 
-واجهة عربية (RTL) لمنصة المساعدة الأكاديمية المرتبطة بمشروع IEEE RAG Hackathon.
+واجهة React/Vite/TypeScript عربية مع تصميم الفريق الأصلي، متصلة بخلفية FastAPI المحلية.
 
-## Stack
-
-- React + Vite + TypeScript
-- Tailwind CSS v4 (`@tailwindcss/vite`)
-- Lucide React
-- Motion (`motion/react`)
-- React Router
-
-## تشغيل محلي
-
-```bash
-cd frontend
-npm install
-npm run dev
+```powershell
+# From D:\rag_hackathon; Backend must already be running separately.
+.\scripts\run_final_demo.ps1 -Component frontend
 ```
 
-العنوان الافتراضي: [http://localhost:5173](http://localhost:5173)
+Or from frontend/: `npm.cmd run dev -- --host 127.0.0.1 --port 5173 --strictPort`. Default Vite proxies /api and /health to127.0.0.1:8000. Optional VITE_API_BASE_URL selects an explicit Backend origin. Never put server keys into VITE_*.
 
-```bash
-npm run build
-```
+`npm.cmd run build` checks TypeScript and builds. `npm.cmd run lint` runs Oxlint. `npm.cmd run test:store` uses Node22 built-in TypeScript stripping to test asynchronous request state, chat switching/deletion, scope changes and API failures; it is not a rendered-browser test.
 
-## الصفحات الحالية
+Home `/` and advisor `/advisor` preserve Arabic styling/RTL. Choose a program and its published plan, or general regulations without a program. Names/versions come from /api/programs. Context changes create another conversation and retain the previous one. Delayed replies update only their captured conversation. All responses preserve status/reason/mode/source fields and are rendered as escaped text with source cards.
 
-- `/` الصفحة الرئيسية
-- `/advisor` واجهة انتقال مؤقتة للمرشد (بدون استدعاء LLM)
-
-إرسال سؤال من شريط البحث ينقل إلى `/advisor` مع حفظ نص السؤال في `location.state`.
-
-## ملاحظات تكامل RAG
-
-عقد الاستجابة v1.0.0 موثّق في `docs/` بجذر المستودع. ملفات mock موجودة في `src/mocks/` للاستخدام لاحقًا عند ربط Backend.
+The current Backend is deliberately mock-only. The UI prominently labels simulation, loading, insufficient evidence and unavailable/error states. Only registered verified example questions have scripted answers; other questions may refuse. Previous demo-only chats are left in the old browser storage key and are not imported as real answers.

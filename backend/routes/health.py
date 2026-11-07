@@ -26,8 +26,8 @@ def health(request: Request) -> HealthResponse:
         rag_ready=rag_ready,
         index=index,
         provider_mode=provider_mode,  # type: ignore[arg-type]
-        catalog_programs=len({p.program_id for p in state.catalog.plans}),
-        catalog_verified=state.catalog.verified,
+        catalog_programs=len(state.programs()),
+        catalog_verified=state.rag_ready or bool(state.catalog and state.catalog.verified),
         python_version=python_version_string(),
         qdrant_local_workers="single",
     )
