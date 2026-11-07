@@ -33,6 +33,7 @@ Thumbs.db
 
 # Organizer material and historical paid-call template stay private.
 /IEEE_RAG_Hackathon_Judging_Guide_AR.pdf
+/IEEE_RAG_Student_Guide_Academic_Advisor_AR.pdf
 /config/phase3_smoke.env.example
 # Historical report writers are retained locally, outside the runtime handoff.
 /scripts/write_phase*_report.py
@@ -52,6 +53,7 @@ Thumbs.db
 !/docs/integration_contract.md
 !/docs/rag_response.schema.json
 !/docs/final_backend_handoff.md
+!/docs/faculty_rag_handoff.md
 !/docs/hackathon_readiness.md
 !/docs/ai_attribution.md
 !/docs/faithfulness_evaluation.md

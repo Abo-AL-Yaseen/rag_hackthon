@@ -1,5 +1,7 @@
 # Ready-to-send teammate message
 
+Current Engineering faculty runtime, validation and local-asset instructions are in [faculty_rag_handoff.md](faculty_rag_handoff.md). The preparation-only 178-test message below is retained as historical context; the later faculty regression has 226 tests. Contract v1.0.0 is unchanged.
+
 Copy the message below. It describes the implemented engine, not an agreement already accepted by teammates. Existing contract/schema files are unchanged.
 
 ---

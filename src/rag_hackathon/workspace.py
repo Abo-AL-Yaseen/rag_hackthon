@@ -75,9 +75,11 @@ def ingest(input_path,index_path,*,encoder=None,include_json=False,max_tokens=24
     return manifest
 
 
-def open_index(index_path,*,encoder=None):
+def open_index(index_path,*,encoder=None,_scope_authorized=False):
     target=Path(index_path)
     manifest=json.loads((target/'dataset_manifest.json').read_text())
+    if manifest.get('requires_scoped_retrieval') and not _scope_authorized:
+        raise ValueError('Program-scoped dataset: use ScopedIndex.open() and select an explicit program/plan')
     snapshot=(target/'chunks.json').read_bytes()
     if manifest.get('state')!='complete' or hashlib.sha256(snapshot).hexdigest()!=manifest.get('chunks_sha256'):
         raise ValueError('Incomplete or changed dataset snapshot; use a fresh index')
