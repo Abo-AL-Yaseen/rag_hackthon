@@ -1,0 +1,21 @@
+{
+  "contract_version": "1.0.0",
+  "answer": "لا أستطيع الإجابة عن هذا السؤال من الأدلة المتاحة.",
+  "sources": [],
+  "claims": [],
+  "status": "insufficient_evidence",
+  "reason": "out_of_scope",
+  "language": "ar",
+  "mode": "mock",
+  "latency": {
+    "retrieval_ms": 44.982,
+    "generation_ms": 0.036,
+    "validation_ms": 0.065,
+    "total_ms": 45.099
+  },
+  "validation": {
+    "citation_references": "not_applicable",
+    "support_check": "not_applicable",
+    "semantic_faithfulness": "not_evaluated"
+  }
+}

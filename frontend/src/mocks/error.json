@@ -1,0 +1,21 @@
+{
+  "contract_version": "1.0.0",
+  "answer": "The request could not be completed safely. Please try again later.",
+  "sources": [],
+  "claims": [],
+  "status": "error",
+  "reason": "invalid_citation",
+  "language": "en",
+  "mode": "mock",
+  "latency": {
+    "retrieval_ms": 0.009,
+    "generation_ms": 0.007,
+    "validation_ms": 0.106,
+    "total_ms": 0.14
+  },
+  "validation": {
+    "citation_references": "not_applicable",
+    "support_check": "not_applicable",
+    "semantic_faithfulness": "not_evaluated"
+  }
+}

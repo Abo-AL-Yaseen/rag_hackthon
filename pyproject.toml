@@ -12,6 +12,12 @@ requires-python = ">=3.11,<3.12"
 where = ["src"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
-testpaths = ["tests"]
-markers = ["integration: requires the approved locally cached E5-small model"]
+pythonpath = ["src", "."]
+testpaths = ["tests", "backend/tests"]
+markers = [
+    "integration: requires the approved locally cached E5-small model",
+    "backend: Backend HTTP transport unit/mocked tests (no live LLM)",
+    "real_index: requires an existing local RAG index under RAG_INDEX_PATH",
+    "remote_llm: requires authorized free-tier remote provider approval",
+    "e2e: full Frontend+Backend+index path (manual/demo)",
+]
