@@ -10,6 +10,7 @@ from backend.catalog import ProgramCatalog
 from backend.config import BackendSettings
 from rag_hackathon.faculty_runtime import FacultyRuntime
 from rag_hackathon.generation.academic_extractive import LocalAcademicEvidenceProvider
+from rag_hackathon.uploaded_documents import UploadedDocuments
 logger = logging.getLogger("backend")
 
 @dataclass
@@ -23,6 +24,7 @@ class AppState:
     index_detail: str | None = "index not opened"
     provider_mode: str = "uninitialized"
     startup_errors: list[str] = field(default_factory=list)
+    uploads: Any | None = None
 
     @property
     def rag_ready(self) -> bool:
@@ -74,6 +76,8 @@ def build_state(settings: BackendSettings | None = None) -> AppState:
             return state
         state.runtime = FacultyRuntime.open(settings.index_path, state.provider, top_k=5)
         state.service = state.runtime.service
+        if settings.admin_document_token is not None:
+            state.uploads=UploadedDocuments(state.runtime,settings.admin_upload_root,settings.admin_index_root)
         state.index_open = True
         state.index_detail = 'open (scoped FacultyRuntime)'
         logger.info('Faculty runtime ready; one local owner, non-scripted local excerpts, no LLM')
@@ -86,6 +90,8 @@ def build_state(settings: BackendSettings | None = None) -> AppState:
     return state
 
 def shutdown_state(state: AppState) -> None:
+    if state.uploads is not None:
+        state.uploads.close();state.uploads=None
     if state.runtime is not None:
         state.runtime.close()
         state.runtime = None

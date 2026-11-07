@@ -116,6 +116,7 @@ export function AdvisorPage() {
       <AdvisorHeader onToggleSidebar={() => setSidebarOpen((open) => !open)} />
 
       <section className="advisor-context" aria-label="اختيار التخصص والخطة">
+        <a href="/admin/documents">إدارة المستندات / Document Management</a>
         <div className="advisor-context__fields">
           <label>التخصص الهندسي
             <select aria-label="التخصص الهندسي" value={scope.program_id ?? ''} disabled={catalogStatus !== 'ready'}

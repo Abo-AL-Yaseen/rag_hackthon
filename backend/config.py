@@ -4,6 +4,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from pydantic import SecretStr
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = Path(__file__).resolve().parent / "catalog" / "programs.json"
@@ -39,6 +40,9 @@ class BackendSettings:
     allow_paid_api_calls: bool
     allow_free_api_calls: bool
     llm_provider: str
+    admin_document_token: SecretStr | None = None
+    admin_upload_root: Path = ROOT/'data/uploads/admin_documents_v1'
+    admin_index_root: Path = ROOT/'data/index/admin_documents_v1'
 
     @classmethod
     def from_env(cls) -> "BackendSettings":
@@ -59,4 +63,5 @@ class BackendSettings:
             allow_paid_api_calls=_env_bool("ALLOW_PAID_API_CALLS", False),
             allow_free_api_calls=_env_bool("ALLOW_FREE_API_CALLS", False),
             llm_provider=os.environ.get("LLM_PROVIDER", "mock").strip().lower() or "mock",
+            admin_document_token=SecretStr(os.environ['ADMIN_DOCUMENT_TOKEN']) if len(os.environ.get('ADMIN_DOCUMENT_TOKEN',''))>=32 else None,
         )

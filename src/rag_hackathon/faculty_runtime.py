@@ -4,6 +4,7 @@ No provider settings or .env file are loaded here. Default generation is an
 empty offline mock; a Backend must inject an independently authorized provider.
 """
 from contextvars import ContextVar
+from contextlib import contextmanager
 from dataclasses import dataclass
 import json
 from pathlib import Path
@@ -17,6 +18,7 @@ from .retrieval.scoped import ScopedIndex
 from .service import RAGService, RAGPolicy, REFUSALS
 from .academic_decisions import intent, program_mentions, MESSAGES
 from .runtime_catalog import RuntimeCatalog
+from .course_catalog import CourseCatalog
 
 
 @dataclass
@@ -102,6 +104,7 @@ class FacultyRuntime:
         self.service = RAGService(_SelectedRetriever(self), provider or DeterministicMockProvider(),
                                   policy=RAGPolicy(top_k=top_k))
         self._catalog=RuntimeCatalog(self.programs(),documents)
+        self.course_catalog=CourseCatalog(documents,self.programs())
 
     @classmethod
     def open(cls, index_path, provider=None, *, encoder=None, top_k=5):
@@ -109,7 +112,11 @@ class FacultyRuntime:
         index = ScopedIndex.open(path, encoder=encoder)
         try:
             binding = json.loads((path/'scope_manifest.json').read_text(encoding='utf-8'))
-            return cls(index, binding['documents'], provider, top_k=top_k)
+            result=cls(index, binding['documents'], provider, top_k=top_k)
+            reviewed=path.parent.parent/'processed'/'engineering_faculty_20261107'/'courses.json'
+            if reviewed.is_file():
+                result.course_catalog=CourseCatalog(binding['documents'],result.programs(),json.loads(reviewed.read_text(encoding='utf-8')))
+            return result
         except Exception:
             index.close()
             raise
@@ -121,6 +128,8 @@ class FacultyRuntime:
         """Trusted URL/page/table metadata for a Backend-owned source resolver."""
         if document_id in self._catalog.locators:
             return dict(self._catalog.locators[document_id])
+        if document_id in self.course_catalog.locators:
+            return dict(self.course_catalog.locators[document_id])
         doc = self._documents[document_id]
         return {key: doc.get(key) for key in ('source_url','document_title','physical_pdf_page',
             'engine_page_number','table_index','row_index','program_id','plan_version','article')}
@@ -134,6 +143,8 @@ class FacultyRuntime:
         if intent(question)=='catalog':
             result=self._catalog.ask(question,language)
             return result if result else self._decision('missing_evidence','language_evidence',language,start)
+        if intent(question)=='course_list':
+            return self._course_list(question,language,program_id,plan_version,start)
         if (program_id is None) != (plan_version is None):
             return self._decision('ambiguous', 'scope', language, start)
         key = (program_id, plan_version)
@@ -202,5 +213,37 @@ class FacultyRuntime:
         response.answer=MESSAGES[message][language]
         return response
 
+    def _course_list(self,question,language,program,version,start):
+        if (program is not None and not isinstance(program,str)) or (version is not None and not isinstance(version,str)):
+            return self._refusal('ambiguous',language,start)
+        named=program_mentions(question,self.programs());mentioned=_mentioned_plan_versions(question)
+        if len(named)>1 or (program and named and named!={program}) or (version and mentioned and mentioned!={version}):
+            return self._decision('ambiguous','conflict',language,start)
+        program=program or (next(iter(named)) if len(named)==1 else None)
+        version=version or (next(iter(mentioned)) if len(mentioned)==1 else None)
+        versions=sorted({p['plan_version'] for p in self.programs() if p['program_id']==program})
+        if program and versions and version is None:
+            response=self._refusal('ambiguous',language,start)
+            response.answer=('اختار نسخة خطتك الدراسية من النسخ المتاحة لهذا التخصص: ' if language=='ar' else 'Please select your study-plan version from the available versions for this program: ')+', '.join(versions)
+            return response
+        if not program or not version:return self._decision('ambiguous','scope',language,start)
+        if (program,version) not in self._views:return self._refusal('outdated_sources',language,start)
+        from .academic_decisions import normalize
+        if re.search(r'السنه|الفصل|first.year|year\s*\d|semester',normalize(question)):
+            response=self._refusal('missing_evidence',language,start)
+            response.answer=('الخطة المتاحة لا تحتوي تصنيفًا موثقًا حسب السنة أو الفصل. أقدر أعرض كامل المساقات حسب مجموعات المتطلبات المنشورة، دون افتراض السنة من رمز المساق.' if language=='ar' else 'The available plan has no verified year/semester grouping. I can show all course entries by their published requirement groups, without inferring year from course codes.')
+            return response
+        result=self.course_catalog.ask(question,program,version,language)
+        if result:return result
+        response=self._refusal('missing_evidence',language,start)
+        response.answer=('لا توجد قائمة مساقات موثوقة كافية في الخطة المتاحة. راجع القسم الأكاديمي؛ لا أستطيع اختراع قائمة كاملة.' if language=='ar' else 'The available plan does not contain a sufficient verified course list. Please check with the academic department; I cannot invent a complete list.')
+        return response
+
     def close(self):
         self._index.close()
+
+    @contextmanager
+    def embedding_session(self):
+        """Reuse the cached CPU model under its existing owner lock; no downloads."""
+        with self._index._lock:
+            yield self._index._owner.encoder

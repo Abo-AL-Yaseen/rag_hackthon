@@ -10,7 +10,7 @@ from starlette.concurrency import run_in_threadpool
 
 from backend.config import BackendSettings
 from backend.lifecycle import AppState, build_state, shutdown_state
-from backend.routes import chat, health, programs, sources
+from backend.routes import chat, health, programs, sources, courses, documents
 
 logger = logging.getLogger("backend")
 
@@ -48,12 +48,14 @@ def create_app(settings: BackendSettings | None = None, *, state: AppState | Non
         allow_origins=list(settings.cors_origins),
         allow_credentials=False,
         allow_methods=["GET", "POST", "OPTIONS"],
-        allow_headers=["Content-Type", "Accept"],
+        allow_headers=["Content-Type", "Accept", "Authorization"],
     )
     app.include_router(health.router)
     app.include_router(programs.router)
     app.include_router(chat.router)
     app.include_router(sources.router)
+    app.include_router(courses.router)
+    app.include_router(documents.router)
     return app
 
 

@@ -20,6 +20,7 @@ def intent(question):
     if re.search(r'امتحان|exam', q) and re.search(r'موعد|متي|ايمت|الاسبوع|القادم|schedule|when|next', q): return 'schedule'
     if re.search(r'انذار|ينذر|warning|probation', q): return 'warning'
     if re.search(r'غياب|غبت|اغيب|غاب|تغيب|غيبت|حضور|دوام|داوم|absen|attendan|miss.{0,15}class', q): return 'attendance'
+    if re.search(r'(?:مواد|مساقات).{0,45}(?:هندسه|تخصص|خطه|السنه)|(?:اعطيني|اعرض|قائمه|كل|جميع).{0,25}(?:مواد|مساقات)|(?:list|show|all).{0,55}(?:courses|study plan)',q):return 'course_list'
     if re.search(r'اضافه.{0,20}(?:مساق|مواد|ماده)|add.{0,20}course', q): return 'add_drop'
     if re.search(r'سحب|اسحب|انسح|withdraw|drop', q):
         return 'add_drop' if re.search(r'اضاف|بدايه|بداي|add|beginning|start', q) and not re.search(r'مالي|financial|refund', q) else 'withdrawal'

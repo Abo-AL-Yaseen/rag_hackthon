@@ -42,3 +42,9 @@ export function getPrograms(): Promise<ProgramSummary[]> { return request('/api/
 export function getSourceLocator(id: string): Promise<SourceLocator> {
   return request('/api/sources/' + encodeURIComponent(id))
 }
+
+export type CoursePage = { total: number; offset: number; limit: number; next_offset: number | null; complete_indexed_coverage: boolean;
+  courses: { course_code: string; name: string; credit_hours: number; classification: string | null; source_url: string; table_index: number; row_index: number }[] }
+export function getCoursePage(program: string, plan: string, language: Language, offset = 0): Promise<CoursePage> {
+  return request(`/api/programs/${encodeURIComponent(program)}/plans/${encodeURIComponent(plan)}/courses?language=${language}&offset=${offset}&limit=20`, undefined, language)
+}

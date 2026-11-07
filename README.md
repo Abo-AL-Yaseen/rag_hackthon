@@ -182,7 +182,7 @@ the advisor requests a program and plan. Responses preserve
 
 ## Evaluation and language limitations
 
-Final verified regression: **278 Python tests passed** (one existing Starlette
+Final verified regression: **290 Python tests passed** (one existing Starlette
 deprecation warning), **10 frontend store tests passed**, and the TypeScript/Vite
 production build passed. Recorded before this final improvement pass: 268 Python tests;
 the preceding real-index decision evaluation passed **24/24** cases. Historical
@@ -262,7 +262,77 @@ actions and are not an automatic setup path. They depend on reviewed local
 handbook inputs. Do not overwrite the validated index or assume a one-command
 fresh-clone rebuild has been verified.
 
-## Known limits, access and attribution
+## Complete study-plan course lists
+
+Ask `اعطيني مواد هندسة الحاسوب` or `List all Computer Engineering courses.`
+with a selected program and plan. The chat opens a paginated course table,
+using all verified indexed rows rather than top-5 retrieval. Computer Engineering
+2021-1 contains **125 distinct course entries**, including elective choices;
+this does not mean all 125 must be completed. Codes, names, credits, official
+URLs and table/row citations are retained. Requirement-group labels are used
+only when reviewed structured data matches the bound indexed course row.
+
+```text
+GET /api/programs/computer-engineering/plans/2021-1/courses?language=ar&offset=0&limit=20
+```
+
+Responses expose `total`, `next_offset`, completeness relative to indexed rows
+and per-course official references. Limit is at most 50; the UI displays 20 per
+page and permits navigation through every entry. Missing scope requests program
+and plan; a known program with no plan requests its actual available versions.
+The current flat plans have no verified year/semester grouping, so first-year
+questions explain that limitation rather than infer year from a course code.
+English selection uses verified English names even for Arabic questions.
+
+## Administrator PDF documents
+
+Open **http://127.0.0.1:5173/admin/documents**. This interface is independent of
+official academic chat. Upload, listing and document questions are all protected
+by Backend bearer authorization. **No default administrator credential exists.**
+The feature returns HTTP 503 until the operator configures a private token of
+at least 32 characters in the Backend process. Configure it only in the Backend
+terminal, without placing it in this file, `.env.example`, a URL or any `VITE_*` setting:
+
+```powershell
+$secureAdminToken = Read-Host 'Enter the operator-provided admin token (32+ characters)' -AsSecureString
+$env:ADMIN_DOCUMENT_TOKEN = [System.Net.NetworkCredential]::new('', $secureAdminToken).Password
+.\scripts\run_final_demo.ps1 -Component backend
+```
+
+The administrator enters that same operator-provided token into the password
+field. The UI keeps it in memory only; logout clears it. No actual operator
+credential was created or printed during development. Integration tests use
+random, test-scoped credentials that are not persisted or shipped.
+
+- Accepts text-based PDFs with validated `%PDF-` signature and safe filename.
+  Rejects encrypted, unreadable/scanned, invalid and oversized content.
+- Limits: 5 MiB, 25 pages, 50,000 extracted characters, 128 chunks and 10 stored
+  documents. Streaming size checks precede parsing/indexing.
+- Reuses page-preserving ingestion and the existing cached E5 model under the
+  model owner's lock. New embeddings are generated **only for uploaded content**.
+- Stores each upload in its own local index under `data/index/admin_documents_v1/`
+  and PDF under `data/uploads/admin_documents_v1/`. Both remain ignored by Git.
+- Questions require an explicitly selected uploaded document. Its evidence never
+  enters `/api/chat` or overrides official regulations. Answers are topical exact
+  passages with actual filename/physical-page citations, not LLM synthesis.
+- Arabic/English output requires source text in that language; no fabricated
+  translations or answers are produced.
+
+API: authenticated `GET/POST /api/admin/documents`, and
+`POST /api/admin/documents/{server_generated_uuid}/ask` with question/language.
+Upload uses a bounded raw PDF body with `filename` and `language` query fields;
+no multipart package is required. Paths, index locations, model settings and
+credentials cannot be supplied through the document-question body.
+
+The configured upload → extraction → E5 embeddings → separate Qdrant → cited
+answer flow passed against the real faculty runtime. Unauthorized requests
+returned 401; non-PDF, encrypted, unreadable, excessive-page and traversal inputs
+were rejected; oversized input returned 413. Official index hashes and official
+answers remained unchanged. Arabic fixture citations preserved physical page 2.
+The running demo intentionally remains upload-disabled until an operator supplies
+the credential; visual browser smoke was unavailable in this environment.
+
+## Remaining limitations
 
 - Local extraction supports bounded intent families, not open-ended LLM reasoning.
 - No access to private Zajel accounts, student records, personal eligibility,
