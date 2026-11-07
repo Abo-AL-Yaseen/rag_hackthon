@@ -13,6 +13,10 @@ def normalize(text):
 def intent(question):
     q = normalize(question)
     if re.search(r'قصيده|شعر|poem|joke|نكته', q): return 'out_of_scope'
+    if re.search(r'كم\s+(?:تخصص|برنامج)|عدد.{0,20}(?:تخصص|برامج)|اسماء.{0,20}(?:تخصص|برامج)|'
+                 r'(?:تخصصات|برامج).{0,25}(?:متوفر|متاح|موجود)|'
+                 r'what.{0,20}engineering programs|how many\s+(?:engineering\s+)?programs|'
+                 r'(?:engineering\s+)?programs.{0,20}(?:available|listed|offered)', q): return 'catalog'
     if re.search(r'امتحان|exam', q) and re.search(r'موعد|متي|ايمت|الاسبوع|القادم|schedule|when|next', q): return 'schedule'
     if re.search(r'انذار|ينذر|warning|probation', q): return 'warning'
     if re.search(r'غياب|غبت|اغيب|غاب|تغيب|غيبت|حضور|دوام|داوم|absen|attendan|miss.{0,15}class', q): return 'attendance'
@@ -29,6 +33,8 @@ def intent(question):
 
 
 MESSAGES = {
+ 'language_evidence': {'ar':'الأدلة المسترجعة لا تتوفر بالعربية. لا أستطيع ترجمتها كإجابة أكاديمية موثقة في الوضع المحلي. اختر لغة المصدر أو راجع القسم.',
+                      'en':'The retrieved evidence is not available in English. Local extractive mode cannot provide a verified English translation. Please select the source language or contact the department.'},
  'scope': {'ar':'عشان أعطيك المعلومة الصحيحة، اختار تخصصك ونسخة خطتك الدراسية؛ معلومات المساقات ومتطلبات التخرج ممكن تختلف من خطة لثانية.',
            'en':'Please select your program and study-plan version so I can use the correct course or graduation requirements.'},
  'conflict': {'ar':'التخصص أو نسخة الخطة في سؤالك لا يتطابق مع الاختيار الحالي. وضّح أي تخصص وخطة تريد اعتمادها.',

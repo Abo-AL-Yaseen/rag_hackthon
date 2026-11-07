@@ -77,3 +77,24 @@ test('invalid contract response is rejected', async () => {
   await store.sendUserMessage('question')
   assert.equal(store.getActiveConversation().messages.at(-1).phase, 'error')
 })
+
+for (const language of ['ar', 'en']) {
+  test(`HTTP errors respect selected ${language} regardless of question language`, async () => {
+    globalThis.fetch = async () => new Response('{}', { status: 503 })
+    store.setChatContext(civil, language)
+    await store.sendUserMessage(language === 'en' ? 'كم ساعة هذا المساق؟' : 'How many credits?')
+    const answer = store.getActiveConversation().messages.at(-1)
+    assert.equal(answer.language, language)
+    assert.match(answer.content, language === 'en' ? /advisor is not ready/ : /المرشد غير جاهز/)
+  })
+}
+
+test('a response in a different language is rejected rather than displayed', async () => {
+  globalThis.fetch = async () => response('Arabic fixture from a stale server')
+  store.setChatContext(civil, 'en')
+  await store.sendUserMessage('كم ساعة المساق؟')
+  const answer = store.getActiveConversation().messages.at(-1)
+  assert.equal(answer.phase, 'error')
+  assert.match(answer.content, /Unable to connect/)
+  assert.equal(answer.response, undefined)
+})

@@ -28,7 +28,10 @@ class LocalAcademicEvidenceProvider:
         chosen=[]
         def matching(pattern):
             return [row for row in rows if re.search(pattern,row[1])]
-        if need=='attendance':
+        if need=='catalog':
+            chosen=[(hit,header,hit.chunk.text) for hit,header,body in rows
+                    if hit.chunk.document_id=='runtime_catalog_'+request.language][:1]
+        elif need=='attendance':
             limits=matching(r'حد الغياب')
             penalties=matching(r'عقوبه.*غياب')
             if limits and penalties:

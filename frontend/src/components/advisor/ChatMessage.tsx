@@ -3,7 +3,7 @@ import type { ChatMessage as ChatMessageType } from '../../lib/chatStore'
 import type { Source, SourceLocator } from '../../types/rag'
 import { getSourceLocator } from '../../api/chatApi'
 
-function officialLink(url: string | undefined) {
+function officialLink(url: string | null | undefined) {
   try {
     const parsed = new URL(url ?? '')
     return parsed.protocol === 'https:' && (parsed.hostname === 'najah.edu' || parsed.hostname.endsWith('.najah.edu')) ? parsed.href : null
@@ -21,17 +21,22 @@ function SourceCard({ source, messageId }: { source: Source; messageId: string }
   return <article className="advisor-source-card" id={`${messageId}-${source.source_id}`}>
     <strong>[{source.source_id}] {locator?.document_title ?? source.document_name}</strong>
     <div><bdi>{source.document_name}</bdi> — <bdi>{source.version}</bdi></div>
-    {locator && <div>{locator.physical_pdf_page !== null ? `صفحة PDF الفعلية: ${locator.physical_pdf_page}` :
+    {locator && <div>{locator.source_type === 'runtime_catalog' ? 'فهرس موثق من بيانات النظام — ليس صفحة PDF' : locator.physical_pdf_page !== null ? `صفحة PDF الفعلية: ${locator.physical_pdf_page}` :
       locator.table_index !== null ? `جدول HTML: ${locator.table_index}، الصف: ${locator.row_index}` : 'ملخص الخطة — HTML'}
       {locator.article && ` — المادة ${locator.article}`}</div>}
     <blockquote>{source.supporting_excerpt}</blockquote>
     {link && <a href={link} target="_blank" rel="noopener noreferrer">المصدر الرسمي</a>}
+    {!!locator?.official_plan_sources?.length && <details><summary>روابط الخطط الرسمية الداعمة للفهرس</summary>
+      {locator.official_plan_sources.filter((r) => officialLink(r.source_url)).map((r) =>
+        <div key={`${r.program_id}-${r.plan_version}-${r.source_url}`}><a href={officialLink(r.source_url)!} target="_blank" rel="noopener noreferrer">{r.document_title ?? r.program_id} — {r.plan_version}</a></div>)}
+    </details>}
   </article>
 }
 
 export function ChatMessage({ message }: { message: ChatMessageType }) {
   const isUser = message.role === 'user'
   const response = message.response
+  const english = (response?.language ?? message.language) === 'en'
   const sources = response?.sources ?? []
   const content = message.content.split(/(\[S\d+\])/g).map((piece, index) => {
     const source = sources.find((s) => `[${s.source_id}]` === piece)
@@ -39,8 +44,8 @@ export function ChatMessage({ message }: { message: ChatMessageType }) {
   })
   return <div className={`advisor-message ${isUser ? 'advisor-message--user' : 'advisor-message--assistant'}`}>
     <div className="advisor-message__bubble" dir={response?.language === 'en' ? 'ltr' : 'auto'}>
-      {message.phase === 'pending' ? <span role="status">جارٍ استرجاع الأدلة وإعداد الرد…</span> : content}
-      {message.phase === 'error' && <div className="advisor-response-state" role="alert">تعذر إكمال الطلب — يمكنك إعادة الإرسال.</div>}
+      {message.phase === 'pending' ? <span role="status">{english ? 'Retrieving evidence and preparing the response…' : 'جارٍ استرجاع الأدلة وإعداد الرد…'}</span> : content}
+      {message.phase === 'error' && <div className="advisor-response-state" role="alert">{english ? 'The request could not be completed. You can resend it.' : 'تعذر إكمال الطلب — يمكنك إعادة الإرسال.'}</div>}
       {response && <>
         <div className="advisor-response-state" role={response.status === 'error' ? 'alert' : 'status'}>
           {response.mode === 'mock' ? 'وضع محلي دون LLM — اقتباسات من الأدلة' : 'توليد LLM عن بُعد'}

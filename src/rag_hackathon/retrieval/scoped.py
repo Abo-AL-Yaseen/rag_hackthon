@@ -14,6 +14,7 @@ from pathlib import Path
 from qdrant_client import models
 
 from ..schema import Chunk, Hit
+from ..academic_decisions import intent
 
 
 class ScopedIndex:
@@ -123,6 +124,10 @@ class _ScopedRetriever:
             # decimal digits are accepted without changing stored course IDs.
             requested = {''.join(str(unicodedata.decimal(c)) for c in code)
                          for code in re.findall(r'(?<!\d)\d{6,10}(?!\d)', question)}
+            attendance = intent(question) == 'attendance'
+            if attendance:
+                # Shared attendance conditions do not depend on course credits.
+                requested = set()
             course_ids = {}
             for ident in self._allowed:
                 code = parent._documents[ident].get('course_code')
@@ -148,7 +153,16 @@ class _ScopedRetriever:
                 bool(re.search(r'credit|hour|ساع|معتمد', question, re.IGNORECASE)))
             summaries = {ident for ident in self._allowed
                 if parent._documents[ident].get('kind') == 'plan_summary'} if wants_graduation_total else set()
-            if requested:
+            if attendance:
+                # Article-family metadata identifies the already verified shared
+                # handbook clauses. Cover limits, unexcused consequences and
+                # accepted excuses together, regardless of query language.
+                family = {ident for ident in self._allowed if parent._documents[ident]['scope']=='regulations'
+                          and str(parent._documents[ident].get('article','')).startswith('10/')}
+                conditions = {ident for ident in family if parent._documents[ident].get('article') in ('10/ب','10/ج','10/د')}
+                points = query(conditions, k)
+                points += query(family - conditions, k - len(points))
+            elif requested:
                 exact = set().union(*(course_ids[code] for code in requested))
                 points = query(exact, k)
                 points += query(self._allowed - exact, k - len(points))

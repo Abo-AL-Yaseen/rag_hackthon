@@ -7,6 +7,7 @@ export type ChatMessage = {
   id: string; role: ChatRole; content: string; createdAt: number
   phase?: 'pending' | 'complete' | 'error'
   response?: RAGResponse
+  language?: Language
 }
 export type Conversation = {
   id: string; title: string; messages: ChatMessage[]; updatedAt: number
@@ -47,7 +48,7 @@ function load(): ChatState {
       c.scope && (c.scope.program_id === null || typeof c.scope.program_id === 'string') &&
       (c.scope.plan_version === null || typeof c.scope.plan_version === 'string') && ['ar', 'en'].includes(c.language),
     ).map((c) => ({ ...c, messages: c.messages.map((m) => m.phase === 'pending' ?
-      { ...m, phase: 'error' as const, content: 'انقطع الطلب عند إغلاق الصفحة. أعد إرسال السؤال عند الحاجة.' } : m) }))
+      { ...m, phase: 'error' as const, content: (m.language ?? c.language) === 'en' ? 'The request was interrupted when the page closed. Please resend it if needed.' : 'انقطع الطلب عند إغلاق الصفحة. أعد إرسال السؤال عند الحاجة.' } : m) }))
     if (!conversations.length) return initial()
     const selected = 'activeId' in raw && conversations.some((c) => c.id === raw.activeId) ? String(raw.activeId) : conversations[0].id
     return { conversations, activeId: selected }
@@ -95,14 +96,14 @@ export async function sendUserMessage(content: string) {
   const context = { ...chat.scope }; const language = chat.language
   update(id, (c) => ({ ...c, title: c.messages.length ? c.title : text.slice(0, 42), updatedAt: Date.now(),
     messages: [...c.messages, { id: uid('question'), role: 'user', content: text, createdAt: Date.now() },
-      { id: messageId, role: 'assistant', content: '', createdAt: Date.now(), phase: 'pending' }] }))
+      { id: messageId, role: 'assistant', content: '', createdAt: Date.now(), phase: 'pending', language }] }))
   try {
     const response = await askAdvisor({ question: text, language, ...context })
     update(id, (c) => ({ ...c, updatedAt: Date.now(), messages: c.messages.map((m) => m.id === messageId ?
       { ...m, phase: 'complete', content: response.answer, response } : m) }))
   } catch (error) {
     update(id, (c) => ({ ...c, messages: c.messages.map((m) => m.id === messageId ?
-      { ...m, phase: 'error', content: error instanceof Error ? error.message : 'تعذر الاتصال بالخلفية.' } : m) }))
+      { ...m, phase: 'error', content: error instanceof Error ? error.message : language === 'en' ? 'Unable to connect to the Backend.' : 'تعذر الاتصال بالخلفية.' } : m) }))
   }
   // Update only the captured conversation/message, even after switch/delete.
   return state.conversations.find((c) => c.id === id) ?? null

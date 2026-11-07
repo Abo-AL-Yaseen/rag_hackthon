@@ -17,7 +17,7 @@ Equivalent process environment and command:
 ```powershell
 $env:PYTHONPATH='D:\rag_hackathon\src;D:\rag_hackathon'
 $env:RAG_INDEX_PATH='D:\rag_hackathon\data\index\engineering_faculty_20261107_v1'
-$env:MOCK_RULES_PATH='D:\rag_hackathon\.local\integration_execution_20261107\mock_cases.json'
+$env:MOCK_RULES_PATH=''
 $env:LLM_PROVIDER='mock'
 $env:ALLOW_FREE_API_CALLS='false'
 $env:ALLOW_PAID_API_CALLS='false'
@@ -26,7 +26,7 @@ $env:TRANSFORMERS_OFFLINE='1'
 .\.venv\Scripts\python.exe -m backend
 ```
 
-Use one worker and no reload. Do not start a second process against the same Qdrant Local directory. `scripts/run_final_demo.ps1` sets all offline gates and ignores absent private fixture files, producing honest insufficient-evidence responses if no fixtures are available. In this workspace, private mock fixtures contain verified example questions; they are not general LLM generation and must remain local.
+Use one worker and no reload. Do not start a second process against the same Qdrant Local directory. `scripts/run_final_demo.ps1` sets all offline gates. The serving path uses non-scripted local excerpt selection, not private question fixtures or an LLM. English policy generation refuses when verified English evidence is unavailable. Catalog queries use a citable in-memory view of verified program metadata, with supporting official plan links. See the root README for current behavior and reproduction limits.
 
 ## Ownership and routes
 

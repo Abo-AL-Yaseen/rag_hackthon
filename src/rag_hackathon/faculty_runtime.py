@@ -16,12 +16,14 @@ from .generation.providers import DeterministicMockProvider
 from .retrieval.scoped import ScopedIndex
 from .service import RAGService, RAGPolicy, REFUSALS
 from .academic_decisions import intent, program_mentions, MESSAGES
+from .runtime_catalog import RuntimeCatalog
 
 
 @dataclass
 class _Selection:
     retriever: object
     uncertainty: str | None = None
+    evidence_languages: set | None = None
 
 
 def _course_codes(question):
@@ -55,6 +57,7 @@ class _SelectedRetriever:
         if selection is None:
             raise RuntimeError('Faculty calls must go through the owning runtime')
         hits = selection.retriever.search(question, k)
+        selection.evidence_languages = {self.runtime._documents[h.chunk.document_id].get('language') for h in hits}
         if not _asks_prerequisites(question):
             return hits
         codes = _course_codes(question)
@@ -98,6 +101,7 @@ class FacultyRuntime:
         self._general = index.for_regulations()
         self.service = RAGService(_SelectedRetriever(self), provider or DeterministicMockProvider(),
                                   policy=RAGPolicy(top_k=top_k))
+        self._catalog=RuntimeCatalog(self.programs(),documents)
 
     @classmethod
     def open(cls, index_path, provider=None, *, encoder=None, top_k=5):
@@ -115,6 +119,8 @@ class FacultyRuntime:
 
     def source_locator(self, document_id):
         """Trusted URL/page/table metadata for a Backend-owned source resolver."""
+        if document_id in self._catalog.locators:
+            return dict(self._catalog.locators[document_id])
         doc = self._documents[document_id]
         return {key: doc.get(key) for key in ('source_url','document_title','physical_pdf_page',
             'engine_page_number','table_index','row_index','program_id','plan_version','article')}
@@ -125,6 +131,9 @@ class FacultyRuntime:
                 or len(question) > self.service.policy.max_question_chars):
             # The engine rejects invalid input before touching the retriever.
             return self.service.ask(question, language=language)
+        if intent(question)=='catalog':
+            result=self._catalog.ask(question,language)
+            return result if result else self._decision('missing_evidence','language_evidence',language,start)
         if (program_id is None) != (plan_version is None):
             return self._decision('ambiguous', 'scope', language, start)
         key = (program_id, plan_version)
@@ -167,8 +176,11 @@ class FacultyRuntime:
                     result.answer = 'المتطلبات السابقة غير واضحة أو غير مذكورة في الخطة المنشورة. يرجى مراجعة القسم قبل التسجيل.'
                 else:
                     result.answer = 'Prerequisites are unclear or not listed in the published plan. Please check with the department before registration.'
-            elif result.status=='insufficient_evidence' and result.reason=='missing_evidence' and need=='course':
-                result.answer=MESSAGES['missing'][language]
+            elif result.status=='insufficient_evidence' and result.reason=='missing_evidence':
+                if selection.evidence_languages and language not in selection.evidence_languages:
+                    result.answer=MESSAGES['language_evidence'][language]
+                elif need=='course':
+                    result.answer=MESSAGES['missing'][language]
             result.latency.total_ms = (time.perf_counter()-start)*1000
             return result
         finally:

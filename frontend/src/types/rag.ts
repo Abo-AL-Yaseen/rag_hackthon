@@ -64,7 +64,9 @@ export interface ProgramSummary {
 
 export interface SourceLocator {
   document_id: string
-  source_url: string
+  source_url: string | null
+  source_type?: 'runtime_catalog'
+  official_plan_sources?: { program_id: string; plan_version: string; source_url: string; document_title?: string }[]
   document_title: string
   physical_pdf_page: number | null
   engine_page_number: number

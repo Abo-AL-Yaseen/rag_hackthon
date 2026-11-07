@@ -59,6 +59,8 @@ Thumbs.db
 !/docs/rag_response.schema.json
 !/docs/final_backend_handoff.md
 !/docs/faculty_rag_handoff.md
+!/docs/academic_decisions.md
+!/docs/final_demo_readiness.md
 !/docs/hackathon_readiness.md
 !/docs/ai_attribution.md
 !/docs/faithfulness_evaluation.md

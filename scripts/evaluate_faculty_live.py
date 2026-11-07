@@ -32,6 +32,8 @@ SETTINGS={'LLM_PROVIDER':'groq','GROQ_BASE_URL':'https://api.groq.com/openai/v1'
     'LLM_RESPONSE_FORMAT':'json_object','LLM_MAX_INPUT_BYTES':'24000',
     'LLM_REASONING_ENABLED':'','LLM_INPUT_PRICE_CEILING':'','LLM_OUTPUT_PRICE_CEILING':''}
 BOUND_CODE=('scripts/evaluate_faculty_live.py','src/rag_hackathon/faculty_runtime.py',
+    'src/rag_hackathon/academic_decisions.py','src/rag_hackathon/runtime_catalog.py',
+    'src/rag_hackathon/generation/academic_extractive.py',
     'src/rag_hackathon/retrieval/scoped.py','src/rag_hackathon/service.py',
     'src/rag_hackathon/generation/providers.py','src/rag_hackathon/generation/prompts.py',
     'src/rag_hackathon/generation/selections.py','src/rag_hackathon/generation/contracts.py')
